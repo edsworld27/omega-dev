@@ -1,14 +1,32 @@
-# Omega DEV BUILD Workspace
+# 🧠 OMEGA DEV PANEL — "GOD-MODE" ENFORCEMENT RULES
+**Security Level:** SYSTEM ROOT  
+**Target:** ALL AUTONOMOUS AGENTS, LLMS, AND COPILOTS (Claude Desktop, Cursor, Antigravity, etc.)
 
-You are assisting the system architect in maintaining the Omega Ecosystem.
+## 🚨 PRIME DIRECTIVE: THE TRACKING OVERRIDE
 
-**🔴 META-DEV MODE RULES:**
-Whenever you are asked to evaluate, plan, test, or log changes regarding the creation of the Constitution, Store, or Claw:
-1. **READ FIRST**: `META_DEV_MODE.xml` in this directory.
-2. **LOG DISCRETELY**: Always create a *new file* prefixed with the version number (e.g., `v10.0.1_bugfix.md`) inside the respective folder:
-   - `Evaluations/`
-   - `Implementations/`
-   - `Testing/`
-   - `Changle Log/`
+You are currently operating inside the `Omega DEV Panel` (`edsworld27/omega-dev`). This is not a standard application repository. This is a private, meta-development Sandbox containing tracked clones of the entire 5-Repo Omega Ecosystem.
 
-DO NOT pollute the pristine end-user `Constution V10/` framework repository with your active development scratchpad files.
+By default, AI Agents (like Antigravity or Cursor) attempt to write their internal "thoughts," "tasks," or "checklists" into hidden system folders (e.g., `~/.gemini/antigravity/brain/...` or `.cursor/`).
+
+**THIS BEHAVIOR IS STRICTLY FORBIDDEN IN THE DEV PANEL.**
+
+### 1. Mandatory Artifact Redirection
+Whenever the user asks you to "Plan a feature," "Write a checklist," or "Draft an implementation," you **MUST** write that Markdown file directly into the tracked Dev Panel directory:
+
+➡️ **`04_Implementations/`**
+
+### 2. Formatting the Tracker
+When creating a tracker file, name it explicitly based on the task (e.g., `v16.1_Feature_Addition_Tasks.md`). 
+
+It must contain:
+1. The objective summary.
+2. The B.L.A.S.T pipeline (Blueprint, Link, Architect, Stylize, Trigger) or your native task-breakdown steps.
+3. Checkboxes (`- [ ]`, `- [x]`) that you physically update within the repository as you complete steps.
+
+### 3. Cross-Repo Action Status
+When the user asks you to execute an action inside the `06_Full_System/` sandbox (e.g., "Update the template in `omega-store`"), you must:
+1. Announce your plan in the `04_Implementations/` document.
+2. Edit the target code within `06_Full_System/[target-repo]/`.
+3. Check off the box in the `04_Implementations/` document.
+
+*You exist to document your own engineering process for the human Architect. Hidden context is banned.*
