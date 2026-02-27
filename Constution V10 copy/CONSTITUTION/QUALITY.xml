@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ============================================================
+  OMEGA QUALITY
+  ============================================================
+  VERSION:      6.0
+  LOCATION:     constitution/
+  PURPOSE:      Error classification, repair protocols, and
+                audit procedures. How to diagnose problems
+                and verify compliance.
+  ============================================================
+-->
+
+<omega_quality
+  version="6.0"
+  location="constitution/">
+
+  <!-- ============================================================
+       PART 1: ERROR TAXONOMY
+  ============================================================ -->
+
+  <error_taxonomy>
+
+    <error code="E1" name="Configuration Error">
+      <symptoms>Works locally, fails in another environment. Missing env vars. Wrong paths.</symptoms>
+      <repair_protocol>
+        <step order="1">Compare .env against .env.example</step>
+        <step order="2">Check all path references are relative, not absolute</step>
+        <step order="3">Verify environment-specific config (dev vs prod)</step>
+        <step order="4">Run in clean environment to reproduce</step>
+      </repair_protocol>
+      <max_attempts>2</max_attempts>
+      <rationale>Config fixes are binary. It's either the right value or it isn't. If 2 attempts fail, you're looking in the wrong place.</rationale>
+    </error>
+
+    <error code="E2" name="Logic Error">
+      <symptoms>No crash, but wrong output. Incorrect calculations. Wrong branching.</symptoms>
+      <repair_protocol>
+        <step order="1">Trace the logic flow step by step against the SOP</step>
+        <step order="2">Add logging at each decision point</step>
+        <step order="3">Compare actual vs expected at each step</step>
+        <step order="4">Fix the logic AND update the SOP</step>
+      </repair_protocol>
+      <max_attempts>3</max_attempts>
+      <rationale>Logic errors benefit from trace-based diagnosis. 3 hypotheses with stepped logging is usually enough.</rationale>
+    </error>
+
+    <error code="E3" name="Integration Error">
+      <symptoms>API contract mismatch. Service timeout. Authentication failure. Schema drift.</symptoms>
+      <repair_protocol>
+        <step order="1">Compare request/response against INTERFACES.md contract</step>
+        <step order="2">Test the external service independently (handshake test)</step>
+        <step order="3">Check authentication credentials and scoping</step>
+        <step order="4">Verify data format (JSON schema, field types, required fields)</step>
+      </repair_protocol>
+      <max_attempts>4</max_attempts>
+      <rationale>Integration issues often involve multiple moving parts (auth, format, timing). Extra attempt for handshake isolation.</rationale>
+    </error>
+
+    <error code="E4" name="Data Error">
+      <symptoms>Null where expected. Wrong type. Missing fields. Encoding issues.</symptoms>
+      <repair_protocol>
+        <step order="1">Validate input data at the boundary</step>
+        <step order="2">Check schema definitions against actual data</step>
+        <step order="3">Add defensive checks (null guards, type coercion)</step>
+        <step order="4">Add data validation tests</step>
+      </repair_protocol>
+      <max_attempts>3</max_attempts>
+      <rationale>Data validation is methodical. 3 attempts with progressive schema tightening.</rationale>
+    </error>
+
+    <error code="E5" name="Security Error" critical="true">
+      <symptoms>Vulnerability found. Injection possible. Auth bypass. Secrets exposed.</symptoms>
+      <repair_protocol>
+        <step order="1">HALT immediately. Security errors are CRITICAL.</step>
+        <step order="2">Assess blast radius (what could an attacker do?)</step>
+        <step order="3">Fix the vulnerability</step>
+        <step order="4">Check for similar patterns elsewhere</step>
+        <step order="5">Update security tests</step>
+        <step order="6">Log in incident report</step>
+      </repair_protocol>
+      <max_attempts>1</max_attempts>
+      <rationale>HALT immediately. Do not attempt to self-fix security errors without human review. Generate STOP_REPORT.</rationale>
+    </error>
+
+    <error code="E6" name="Performance Error">
+      <symptoms>Exceeds time budget. Memory leak. Database N+1. Payload too large.</symptoms>
+      <repair_protocol>
+        <step order="1">Profile to find the bottleneck (not guess)</step>
+        <step order="2">Compare against LIMITS.md performance budget</step>
+        <step order="3">Optimise the specific bottleneck</step>
+        <step order="4">Re-measure to verify improvement</step>
+        <step order="5">Add performance test to prevent regression</step>
+      </repair_protocol>
+      <max_attempts>3</max_attempts>
+      <rationale>Profile, optimise, re-measure. 3 cycles is the limit before architectural review.</rationale>
+    </error>
+
+    <error code="E7" name="Dependency Error">
+      <symptoms>Package conflict. Version mismatch. Deprecated API. Missing peer dependency.</symptoms>
+      <repair_protocol>
+        <step order="1">Check deps.md against actual installed versions</step>
+        <step order="2">Run dependency audit (npm audit / pip audit)</step>
+        <step order="3">Pin versions if floating</step>
+        <step order="4">Update deps.md with resolution</step>
+      </repair_protocol>
+      <max_attempts>2</max_attempts>
+      <rationale>Version conflicts are deterministic. If 2 attempts fail, the dependency chain needs human decision.</rationale>
+    </error>
+
+  </error_taxonomy>
+
+  <!-- ============================================================
+       CIRCUIT BREAKER RULES
+  ============================================================ -->
+
+  <circuit_breaker>
+    <description>The standard Rule of 3 applies by default, but each error category has a tuned limit based on its nature.</description>
+
+    <rules>
+      <rule>Each attempt must use a different hypothesis. Repeating the same fix is not an attempt. It's a waste.</rule>
+      <rule>Log each attempt in progress.md with: hypothesis, action taken, result.</rule>
+      <rule>On limit reached: Generate a STOP_REPORT with all attempts documented and await human decision.</rule>
+      <rule>Cross-category escalation: If fixing one error reveals a different category, reset the counter for the new category.</rule>
+    </rules>
+
+    <edge_cases>
+      <case name="E5 Override">
+        If the Pilot instructs you to proceed after an E5 HALT, you MUST log the override
+        in decision_log.md with: who approved, why, what risk was accepted. Then proceed
+        with the fix but run security tests immediately after.
+      </case>
+      <case name="Ambiguous Classification">
+        If an error could be E2 (Logic) or E3 (Integration), classify as the one with
+        the higher attempt limit (E3:4) to give yourself more room. Log the ambiguity.
+      </case>
+      <case name="Cascading Errors">
+        If a single change triggers errors in multiple categories, address E5 first (security),
+        then the root-cause category. Do not count cascading errors as separate attempts.
+      </case>
+    </edge_cases>
+  </circuit_breaker>
+
+  <!-- ============================================================
+       CLASSIFICATION RULES
+  ============================================================ -->
+
+  <classification_rules>
+    <description>When an error occurs, classify FIRST, then repair:</description>
+    <step order="1">Read the error message and stack trace completely</step>
+    <step order="2">Identify which category (E1-E7) matches</step>
+    <step order="3">Check the circuit breaker limit for that category</step>
+    <step order="4">Follow that category's repair protocol</step>
+    <step order="5">If the error spans categories, address the root cause category first</step>
+    <step order="6">Log the classification in progress.md for knowledge compounding</step>
+  </classification_rules>
+
+  <!-- ============================================================
+       PART 2: AUDIT PROTOCOL
+  ============================================================ -->
+
+  <audit_protocol>
+    <trigger>When the user says audit, review, check compliance, or how does the project measure up</trigger>
+
+    <purpose>
+      The Audit Protocol compares the current state of the built project against three layers:
+      1. PRD/MVP Compliance: Does the build match what was planned?
+      2. Constitution Compliance: Does the build follow the system's rules?
+      3. Quality Assessment: Actionable insights for the Pilot.
+    </purpose>
+
+    <when_to_audit>
+      <trigger>On demand (user asks for it)</trigger>
+      <trigger>Automatically at CP-7 (Phase Complete) — mini audit</trigger>
+      <trigger>Automatically at CP-10 (Release Gate) — full audit</trigger>
+      <trigger>After importing an existing project</trigger>
+    </when_to_audit>
+
+    <!-- Layer 1: PRD/MVP Compliance -->
+    <layer number="1" name="PRD/MVP Compliance">
+      <description>Compare the project against the active PRD(s):</description>
+      <check name="Every MVP item built" method="Compare PRD checklist vs project files" pass="All items present" />
+      <check name="Acceptance criteria met" method="Run each criterion's test" pass="All pass with evidence" />
+      <check name="Non-goals respected" method="Check for scope creep" pass="No unplanned features" />
+      <check name="Time appetite" method="Compare actual vs budget" pass="Within tolerance" />
+      <check name="IRONCORE order followed" method="Check build sequence" pass="Function tested before UX" />
+      <output>MVP Scorecard (use constitution/blueprints/MVP_SCORECARD.md)</output>
+    </layer>
+
+    <!-- Layer 2: Constitution Compliance -->
+    <layer number="2" name="Constitution Compliance">
+      <description>Compare the project against the constitution files:</description>
+      <check name="Folder structure" source="STRUCTURE.xml" pass="All required dirs exist" />
+      <check name="STATE.md current" source="FRAMEWORK.xml" pass="Exists and up to date" />
+      <check name="deps.md complete" source="SOURCES.xml" pass="Every installed package listed" />
+      <check name="INTERFACES.md exists" source="FRAMEWORK.xml" pass="Present if APIs exist" />
+      <check name="Security posture" source="SECURITY.xml" pass="No .env committed, no keys in client" />
+      <check name="SOPs exist for code" source="INSTRUCTOR.xml" pass="Every code file has SOP in 02_architecture/" />
+      <check name="Test evidence exists" source="INSTRUCTOR.xml" pass="04_tests/results/ has evidence" />
+      <check name="Legal surface" source="FRAMEWORK.xml" pass="legal/ folder initialised" />
+      <check name="Sources respected" source="SOURCES.xml" pass="No Tier 5 (forbidden) sources used" />
+      <check name="Best practices followed" source="PRACTICES.xml" pass="No anti-patterns detected" />
+      <check name="Seed completeness" source="INSTRUCTOR.xml" pass="Required seeds filled per Seed Activation Matrix" />
+      <check name="Accessibility" source="PRACTICES.xml" pass="WCAG 2.1 AA minimum; Lighthouse accessibility 90 or higher" />
+    </layer>
+
+    <!-- Layer 3: Quality Assessment -->
+    <layer number="3" name="Quality Assessment">
+      <description>Actionable insights, not just pass/fail:</description>
+      <assessment name="Technical Debt Inventory">What shortcuts were taken? What needs refactoring?</assessment>
+      <assessment name="Security Gaps">What's exposed? What needs hardening?</assessment>
+      <assessment name="Performance Assessment">Against budgets from LIMITS.md or PRD</assessment>
+      <assessment name="Documentation Completeness">What's missing or stale?</assessment>
+      <assessment name="Recommendation Priority">Ranked list of what to fix first</assessment>
+    </layer>
+
+    <!-- Audit for Imported Projects -->
+    <imported_project_audit>
+      <description>When a user imports an existing project (not built by this system), run a modified audit:</description>
+      <step order="1" name="Scan">Read the project structure, identify what exists</step>
+      <step order="2" name="Map">Compare against STRUCTURE.xml, note what's missing</step>
+      <step order="3" name="Gap Report">
+        Present what the constitution requires that doesn't exist:
+        - Missing STATE.md? Generate it
+        - Missing deps.md? Scan package files, generate it
+        - Missing SOPs? Note which code has no SOP
+        - Missing tests? Note coverage gaps
+      </step>
+      <step order="4" name="Remediation Plan">Propose a phased plan to bring the project into compliance</step>
+      <step order="5" name="Present at CP-0">Treat this as the Seed Scan for an existing project</step>
+    </imported_project_audit>
+
+    <!-- Audit Output Format -->
+    <output_format><![CDATA[
+═══════════════════════════════════════════
+  AUDIT REPORT
+  Project: [Name]
+  Date: [Date]
+  Type: [PRD Audit / Constitution Audit / Full Audit / Import Audit]
+═══════════════════════════════════════════
+
+  SCORECARD SUMMARY
+  PRD Compliance:          [X/Y items] ([percentage]%)
+  Constitution Compliance: [X/Y checks] ([percentage]%)
+  Overall Health:          [GREEN / AMBER / RED]
+
+  PASSING
+  - [What's working well]
+
+  WARNINGS
+  - [Non-critical issues that should be addressed]
+
+  FAILURES
+  - [Critical issues that must be fixed]
+
+  PRIORITY ACTIONS
+  1. [Most important fix]
+  2. [Second priority]
+  3. [Third priority]
+
+  RECOMMENDATIONS
+  - [Strategic improvements]
+
+  TECHNICAL DEBT
+  - [Shortcuts identified with remediation cost]
+
+═══════════════════════════════════════════
+    ]]></output_format>
+
+  </audit_protocol>
+
+</omega_quality>

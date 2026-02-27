@@ -1,0 +1,14 @@
+# Omega DEV BUILD Workspace
+
+You are assisting the system architect in maintaining the Omega Ecosystem.
+
+**🔴 META-DEV MODE RULES:**
+Whenever you are asked to evaluate, plan, test, or log changes regarding the creation of the Constitution, Store, or Claw:
+1. **READ FIRST**: `META_DEV_MODE.xml` in this directory.
+2. **LOG DISCRETELY**: Always create a *new file* prefixed with the version number (e.g., `v10.0.1_bugfix.md`) inside the respective folder:
+   - `Evaluations/`
+   - `Implementations/`
+   - `Testing/`
+   - `Changle Log/`
+
+DO NOT pollute the pristine end-user `Constution V10/` framework repository with your active development scratchpad files.
