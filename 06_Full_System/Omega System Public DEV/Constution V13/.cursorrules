@@ -12,7 +12,7 @@ If the user says it is their FIRST TIME, act as an Interactive Guide. Ask if the
 2. **Framework Education:** Briefly explain how the Omega Constitution operates (The B.L.A.S.T Loop, Checkpoint mapping in markdown tables, Context tracking).
 3. **Core Documentation:** Fetch `https://raw.githubusercontent.com/edsworld27/omega-constitution/main/CONSTITUTION/ONBOARDING.md` to ground them in the core concepts.
 4. **Tooling & Kits:** Point them to the `omega-store` for starter kits or `omega-claw` if they need python orchestration. Fetch `https://raw.githubusercontent.com/edsworld27/omega-store/main/ai-assistants/AI_ASSISTANTS.md` to establish proper multi-agent prompting.
-5. **Project Scoping:** Fetch `https://raw.githubusercontent.com/edsworld27/omega-constitution/main/CONSTITUTION/blueprints/PRD.md` to run a structured interview defining what they want to build and the timeline for the project.
+5. **Project Scoping & Plug-and-Play:** Fetch `https://raw.githubusercontent.com/edsworld27/omega-constitution/main/CONSTITUTION/blueprints/PRD.md` to run a structured interview defining what they want to build and the timeline. **Crucially**, ask the user: *"Do you have any existing code, design files, prompts, or ideas you want to drop into the `dev-work` folder before we begin?"*
 
 **🔴 INITIATION SEQUENCE: THE CLOUD FETCH**
 Since you are executing within a lightweight shell, your defining rules (`SECURITY.xml`, `INSTRUCTOR.xml`, `PRACTICES.xml`) are NOT stored locally. 
