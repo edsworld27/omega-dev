@@ -4,6 +4,60 @@
 
 ---
 
+## v15.0 — 2026-02-27 (The "God-Mode" Architecture)
+
+### 5-Repo Ecosystem Decoupling
+- Completely decentralized the monolithic system into 5 distinct, highly-scalable repositories.
+  1. `omega-constitution`: The raw XML rules data lake (Public)
+  2. `omega-store`: The certified starter kits and templates (Public)
+  3. `omega-claw`: The Python automation and orchestration suite (Public)
+  4. `Omega-System`: The ultra-lightweight execution shell (Public)
+  5. `omega-dev`: The private "FULL SYSTEM" sandbox (Private)
+- Eradicated all submodules to prevent recursive Git lock issues.
+
+### Zero-Install GitHub MCP
+- Wrote the official `claude_desktop_config.json` documentation for `server-github`.
+- Authorized the "God Prompt" method where Claude independently fetches `omega-index.md` from the cloud and builds applications without a local clone of the rules.
+
+### The Omega Dev "Full System" Sandbox
+- Master-nested all 4 public repositories inside the private `omega-dev/FULL SYSTEM/` directory.
+- Achieved total visibility for the Architect: AI can now read `SECURITY.xml`, edit `omega-store` templates, and generate execution shell scripts in a single context window context.
+
+---
+
+## v14.0 — 2026-02-27 (The Omega Claw)
+
+### Autonomous Safety Daemons
+- Created `omega-claw/scripts/watchdog.py` with hard `MAX_RETRIES=3` infinite loop prevention.
+- Added heuristic failover mechanisms for when AI compilation hallucinates.
+- Created `omega-claw/ai/dev-mode/compressor.py` as an automatic context harvester.
+- Wired a Git Post-Commit hook (`post-commit-compressor.sh`) to automatically compile a repository snapshot after every code push.
+
+### Dynamic Replanning
+- Updated `tasks.json` schema to include `meta: { dynamic_planning: true }`.
+- Added strict cryptographic/string-match verification for reading `SECURITY.xml` before code generation begins.
+
+---
+
+## v13.0 — 2026-02-27 (The Execution Shell)
+
+### The Lightweight Download
+- Audited the `Omega-System` repository (formerly `Constution V10`).
+- Deleted all internal Constitution logic, templates, and Python tools from the public download.
+- Created the master `omega-index.md` manifest directly linking to external Repositories.
+- Added "Day 1 Kit Upsell" logic directly into the shell's setup rules.
+
+---
+
+## v10.0 — 2026-02-26 (The Final Restructure)
+
+### Environment Lockdown
+- Injected `.cursorrules` into the root directory forcing adherence to the Constitution constraints.
+- Removed legacy onboarding folders (`START HERE`, `STORE`, `Omega Claw v1`) from the execution tracking scope.
+- Enforced hard IDE behavioral guidelines for AI-driven dev-mode execution.
+
+---
+
 ## v9.5 — 2026-02-26
 
 ### Context Offloading & Daemon Automation
