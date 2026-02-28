@@ -44,6 +44,7 @@ Constution V10/
 │   ├── PROMPTING.xml           ← Prompt engineering rules
 │   ├── QUALITY.xml             ← Quality gates and checks
 │   ├── CODING_PRINCIPLES.xml   ← AI Coding Standards & Best Practices
+│   ├── EVALUATION_PROTOCOL.xml ← Token-Efficient Audit Rules
 │   ├── SOURCES.xml             ← How to handle external deps
 │   ├── STRUCTURE.xml           ← File/folder conventions
 │   ├── ONBOARDING.md           ← Agent onboarding flow

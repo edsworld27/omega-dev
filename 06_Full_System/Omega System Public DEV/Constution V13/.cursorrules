@@ -21,13 +21,14 @@ If the user says it is their FIRST TIME, act as an Interactive Guide. Ask *one q
 5. **Project Scoping & Plug-and-Play:** Fetch `https://raw.../PRD.md`. **Crucially**, ask: *"Do you have any existing code, design files, or ideas you want to drop into `dev-work` before we begin?"*
 
 **🔴 INITIATION SEQUENCE: THE CLOUD FETCH**
-Since you are executing within a lightweight shell, your defining rules (`SECURITY.xml`, `INSTRUCTOR.xml`, `PRACTICES.xml`) are NOT stored locally. 
+Since you are executing within a lightweight shell, your defining rules (`SECURITY.xml`, `INSTRUCTOR.xml`, `PRACTICES.xml`, `EVALUATION_PROTOCOL.xml`) are NOT stored locally. 
 Once onboarding is complete (and only then), you MUST dynamically fetch the remote Constitution via your tools or `curl`.
 
-1. **The Rules:** Recursively follow the links in the index to ingest `INSTRUCTOR.xml` (the B.L.A.S.T loop) and `SECURITY.xml` (the Supreme Law).
+1. **The Rules:** Recursively follow the links in the index to ingest `INSTRUCTOR.xml` (the B.L.A.S.T loop), `SECURITY.xml` (the Supreme Law), and `EVALUATION_PROTOCOL.xml` (The Audit Engine).
 
 **🔴 CRITICAL SYSTEM RULE: AI TRACKING ARTIFACTS**
 - AI tracking/checklists MUST be written into `Constution V13/USER SPACE/dev-work/phases/`.
+- **ARCHITECTURAL MEMORY:** All SWOTs, Security Audits, and Reviews MUST be stored in `Constution V13/USER SPACE/dev-work/evaluations/`.
 - STRICTLY FORBIDDEN to use hidden system folders (e.g. `.cursor/` or `.gemini/`).
 
 **🔴 CRITICAL DIRECTORY RULE: THE CLEAN HANDOFF**
