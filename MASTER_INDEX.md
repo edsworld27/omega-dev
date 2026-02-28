@@ -10,9 +10,10 @@
 ### 🕹️ [Omega Control](file:///Volumes/Internal/Projects/Omega%20System/Omega%20Control/)
 *The Unified Mission Control, AI Brain, & Governance layer.*
 - **Mission Control**: Next.js Dashboard & FastAPI Bridge.
-- **AI Brain**: `omega-dev` workspace and `00_Agents` swarms.
+- **AI Brain**: `00_Agents` swarms.
 - **Send/Receive**: [`00_Send_Receive`](file:///Volumes/Internal/Projects/Omega%20System/Omega%20Control/00_Send_Receive/) (Dedicated I/O for the core).
-- **Constitution**: System laws and behavioral guardrails.
+- **Constitution**: [`00_Constitution`](file:///Volumes/Internal/Projects/Omega%20System/Omega%20Control/00_Constitution/) - System laws and behavioral guardrails.
+- **Rules**: [`00 Rules`](file:///Volumes/Internal/Projects/Omega%20System/Omega%20Control/00%20Rules/) - Python automation scripts.
 - **Backups**: Remote-Only GitHub snapshot registry.
 - **Ignition**: [`omega-ignite.py`](file:///Volumes/Internal/Projects/Omega%20System/Omega%20Control/00%20Rules/omega-ignite.py) (The system heartbeat).
 
@@ -33,11 +34,12 @@
 
 ## 🏗️ Core Repositories (GitHub)
 
-| Component | Repository URL | Purpose |
-|:----------|:---------------|:--------|
-| **Omega System** | [https://github.com/edsworld27/Omega-System](https://github.com/edsworld27/Omega-System) | Root OS, UI, & Logic |
-| **Omega Store** | [https://github.com/edsworld27/omega-store](https://github.com/edsworld27/omega-store) | Website Kits & Modules |
-| **Omega Backup** | [https://github.com/edsworld27/omega-backup](https://github.com/edsworld27/omega-backup) | Remote Historical Registry |
+| Component | Codename | Repository URL | Purpose |
+|:----------|:---------|:---------------|:--------|
+| **Omega Constitution** | Brain | [omega-constitution](https://github.com/edsworld27/omega-constitution) | Protocols, Rules, Standards |
+| **Omega Store** | Marketplace | [omega-store](https://github.com/edsworld27/omega-store) | Kits, Skills, Templates |
+| **Omega Claw** | Dispatch | [omega-claw](https://github.com/edsworld27/omega-claw) | Orchestration, Agents |
+| **Omega System** | Shell | [Omega-System](https://github.com/edsworld27/Omega-System) | User-facing Execution |
 
 ---
 
