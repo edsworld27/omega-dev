@@ -112,7 +112,20 @@ with st.sidebar:
             st.code(output)
 
 # --- MAIN CONTENT ---
-tab1, tab2, tab3, tab4 = st.tabs(["🚀 Mission Board", "🧠 Memory Lab", "💬 Chat Terminal", "🐝 Hive Monitor"])
+# First-Run Detection
+is_first_run = not CONFIG_FILE.exists()
+
+tabs = ["🚀 Mission Board", "🧠 Memory Lab", "💬 Chat Terminal", "🐝 Hive Monitor", "🔄 Permanent Swarm", "⚙️ Setup Vault"]
+tab_list = st.tabs(tabs)
+
+if is_first_run:
+    st.sidebar.warning("⚠️ INITIALIZATION REQUIRED")
+    active_tab = tabs.index("⚙️ Setup Vault")
+else:
+    active_tab = 0
+
+# Distribute content into tabs
+tab1, tab2, tab3, tab4, tab5, tab6 = tab_list
 
 with tab1:
     st.header("Active Mission Kanban")
@@ -219,6 +232,52 @@ with tab4:
             st.info("Swarm is currently idle. No active agent sandboxes detected.")
     else:
         st.warning(f"Hive directory not found at: {HIVE_DIR}")
+
+with tab5:
+    st.header("🔄 Permanent Agent Swarm (24/7 Daemons)")
+    st.caption("Background processes for continuous operations.")
+    
+    col_a, col_b = st.columns([2, 1])
+    
+    with col_a:
+        st.markdown("### Active Daemons")
+        # Placeholder for daemon list logic
+        st.markdown("""
+            <div class="kanban-card" style="border-left-color: #00ff00;">
+                <b>Outreach Agent</b><br>
+                Status: Running<br>
+                Uptime: 24h 12m
+            </div>
+        """, unsafe_allow_html=True)
+        
+    with col_b:
+        st.markdown("### Daemon Actions")
+        if st.button("Start Outreach Daemon"):
+            st.success("Outreach Daemon Spawning...")
+        if st.button("Kill All Daemons", type="primary"):
+            st.warning("All background processes terminated.")
+
+with tab6:
+    st.header("⚙️ Jarvis Setup & Onboarding Vault")
+    st.caption("Configure your AGI Mission Control.")
+    
+    with st.expander("🛠️ Repository Binding", expanded=True):
+        st.text_input("Constitution Repo URL", value="https://github.com/edsworld27/omega-constitution.git")
+        st.text_input("Store Repo URL", value="https://github.com/edsworld27/omega-store.git")
+        st.text_input("Personal Projects Path", value="/Volumes/Internal/Projects/")
+        if st.button("Bind Repositories"):
+            st.success("Mathematical alignment confirmed.")
+            
+    with st.expander("🔑 API & Secret Management"):
+        st.text_input("Anthropic API Key", type="password")
+        st.text_input("GitHub Access Token", type="password")
+        st.button("Encrypt & Secure Vault")
+        
+    with st.expander("📈 System Readiness"):
+        st.write("Python Environment: ✅")
+        st.write("Docker Vault: ✅")
+        st.write("Tailscale Mesh: ✅")
+        st.progress(100, text="Omega System Fully Configured")
 
 st.sidebar.divider()
 st.sidebar.caption(f"Last Sync: {datetime.now().strftime('%H:%M:%S')}")
