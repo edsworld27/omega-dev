@@ -51,3 +51,11 @@ For agentic projects, skills can be scoped to specific agents:
 | Claude Code | `claude-agent.md` | Bootstraps Anthropic's CLI to obey Omega System rulings |
 | Archivist | `archivist-agent.md` | The AGI hippocampus. Extracts local memory and new workflows, pushing them entirely to private repos/local context to protect the immutable Constitution. |
 | Awesome Skills | `claude-awesome-skills.md` | Direct bridge to the community-curated 'Awesome Claude Skills' repository for rapidly acquiring new specific workflow capabilities. |
+| Presentation Maker | `presentation-agent.md` | Autonomously defines, outlines, and generates high-fidelity presentations using the Gamma API. |
+
+## AntiGravity Integrations
+
+A new sub-category of overarching systemic combinations lives in `/antigravity skills`:
+| Integration | File | Purpose |
+| :--- | :--- | :--- |
+| NotebookLM x AntiGravity | `notebook-lm-system.md` | The Ultimate Combination: Pair NotebookLM's deep research and synthesis (The Brain) with AntiGravity's execution (The Builder). |
