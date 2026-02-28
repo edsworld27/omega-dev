@@ -15,6 +15,12 @@
 ## Maestro Modes
 - **Full Discovery (Default):** Market Audit -> SEO Intent -> UX Journey -> Fulfillment.
 - **Skip to Design:** Bypasses Phase I research. AI immediately generates **TREEMAP.md** and **CP_STRUCTURE.md** for approval before any code.
+- **3D Scrollytelling Mode:** Focuses on scroll-linked canvas animations using image sequences (120+ frames). Includes loading UI, sticky canvas, and transformative text overlays. Optimized for background `#050505`.
+- **Premium UI Styles (UI/UX Pro Max):**
+    - **Linear Aesthetic:** 1px borders, high-contrast, developer-centric.
+    - **Aurora UI:** Mesh gradients and organic movement.
+    - **Bento Grid:** Information-dense, structured card layouts.
+    - **Glassmorphism v2:** High blur, saturated backgrounds, tactile borders.
 
 ## Structural Integrity
 - **TREEMAP.md:** Non-negotiable hierarchical map of the dev environment.
