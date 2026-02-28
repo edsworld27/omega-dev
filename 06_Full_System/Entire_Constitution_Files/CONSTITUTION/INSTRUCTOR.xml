@@ -270,6 +270,172 @@
         <rule order="5">When the job is finished, update the lock to `[COMPLETE]`.</rule>
       </hive_orchestration_locking>
 
+      <!-- ============================================================
+           MULTI-AGENT FILE COORDINATION (v14.4)
+           Prevents collisions when multiple Claude instances work in parallel
+      ============================================================ -->
+
+      <multi_agent_coordination version="1.0">
+        <description>
+          Rules for multiple AI agents (Claude Pro accounts, Antigravity workers)
+          operating simultaneously on the same codebase. This supplements job-level
+          locking with file-level collision prevention.
+        </description>
+
+        <!-- AGENT REGISTRATION -->
+        <agent_registration>
+          <rule order="1" name="Session Start Registration">
+            On session start, IMMEDIATELY run:
+            `python CONSTITUTION/python/hive_locker.py register --agent-id [YOUR_ID]`
+            Your agent ID is determined by:
+            - If spawned by Master Orchestrator: Use assigned ID (ALPHA, BRAVO, etc.)
+            - If standalone session: Use "CLAUDE-1" or "CLAUDE-2" based on terminal
+          </rule>
+
+          <rule order="2" name="Agent State File">
+            Registration creates: `hive/ai_state/AGENT-[ID].md`
+            This file tracks your session state and is readable by other agents.
+          </rule>
+
+          <rule order="3" name="Heartbeat Requirement">
+            Every 60 seconds of active work, send heartbeat:
+            `python CONSTITUTION/python/hive_locker.py heartbeat --agent-id [YOUR_ID]`
+            Failure to heartbeat marks your locks as potentially stale.
+          </rule>
+
+          <rule order="4" name="Session End Deregistration">
+            Before ending session, ALWAYS run:
+            `python CONSTITUTION/python/hive_locker.py deregister --agent-id [YOUR_ID]`
+            This releases all held locks and marks your agent file as inactive.
+          </rule>
+        </agent_registration>
+
+        <!-- FILE LOCKING PROTOCOL -->
+        <file_locking>
+          <prime_directive severity="CRITICAL">
+            BEFORE editing ANY file in a multi-agent environment, you MUST acquire a lock.
+            If lock acquisition fails, DO NOT EDIT. Find alternative or wait.
+          </prime_directive>
+
+          <rule order="1" name="Pre-Edit Lock Check">
+            Before ANY file edit:
+            1. Run: `python CONSTITUTION/python/hive_locker.py check [filepath] --agent-id [ID]`
+            2. If locked by another agent: HALT and find alternative
+            3. If free: Acquire lock before proceeding
+          </rule>
+
+          <rule order="2" name="Lock Acquisition">
+            To edit a file:
+            1. Run: `python CONSTITUTION/python/hive_locker.py lock [filepath] --agent-id [ID] --job-id [JOB]`
+            2. If success: Proceed with edit
+            3. If failure: DO NOT PROCEED - read the conflict message
+          </rule>
+
+          <rule order="3" name="Lock Release">
+            After completing edit and saving:
+            Run: `python CONSTITUTION/python/hive_locker.py unlock [filepath] --agent-id [ID]`
+            NEVER hold locks longer than necessary.
+          </rule>
+
+          <rule order="4" name="Lock Timeout">
+            Locks auto-expire after 5 minutes (300 seconds).
+            For long operations, use heartbeat to extend.
+            Expired locks can be claimed by other agents.
+          </rule>
+
+          <rule order="5" name="Batch Locking">
+            When editing multiple related files:
+            1. Identify ALL files you need to edit BEFORE starting
+            2. Acquire locks on ALL files atomically
+            3. If ANY lock fails, release all acquired locks and retry
+            4. Complete all edits, then release all locks
+          </rule>
+        </file_locking>
+
+        <!-- GIT COORDINATION -->
+        <git_coordination>
+          <branch_isolation>
+            <rule order="1" name="Agent Branch">
+              Each agent works on branch: `agent-[ID]` (e.g., agent-alpha)
+              Create on job claim: `git checkout -b agent-[ID]`
+            </rule>
+
+            <rule order="2" name="No Direct Main Commits">
+              NEVER commit directly to main branch when multiple agents are active.
+              All work goes to agent branch first.
+            </rule>
+
+            <rule order="3" name="Merge Protocol">
+              On job completion:
+              1. Commit all changes to agent branch
+              2. Acquire GIT_PUSH.lock via hive_locker.py git-push-lock
+              3. Fetch latest main: `git fetch origin main`
+              4. Rebase: `git rebase origin/main`
+              5. If conflicts: STOP and report to human
+              6. Push agent branch: `git push -u origin agent-[ID]`
+              7. Release GIT_PUSH.lock
+              8. Request human merge to main
+            </rule>
+          </branch_isolation>
+
+          <push_coordination>
+            <rule name="Push Lock">
+              Before ANY push operation:
+              1. Run: `python CONSTITUTION/python/hive_locker.py git-push-lock --agent-id [ID]`
+              2. If success: Perform push
+              3. After push: `python CONSTITUTION/python/hive_locker.py git-push-unlock --agent-id [ID]`
+            </rule>
+
+            <rule name="Push Lock Timeout">
+              GIT_PUSH.lock auto-expires after 60 seconds.
+              This prevents indefinite blocking if agent crashes.
+            </rule>
+          </push_coordination>
+        </git_coordination>
+
+        <!-- CONFLICT RESOLUTION -->
+        <conflict_resolution>
+          <rule order="1" name="Lock Conflict">
+            If you need a file locked by another agent:
+            1. Check if lock is stale (no heartbeat > 2 minutes)
+            2. If stale: Run cleanup and re-attempt
+            3. If active: Wait 30 seconds and retry (max 3 times)
+            4. If still blocked: Generate STOP REPORT with conflict details
+          </rule>
+
+          <rule order="2" name="Job Overlap">
+            If your job requires files another agent is editing:
+            1. Document the overlap in blockers/OVERLAP-[JOB_ID].md
+            2. Wait for other agent to complete OR
+            3. Coordinate via master-job-board.md comments
+          </rule>
+
+          <rule order="3" name="Emergency Override">
+            Only the Master Orchestrator (Founder) may force-unlock.
+            Workers NEVER use --force flag.
+            Force operations logged for audit.
+          </rule>
+
+          <escalation_format><![CDATA[
+MULTI-AGENT CONFLICT DETECTED
+
+Agent: [YOUR_ID]
+Job: [YOUR_JOB]
+Conflict Type: [LOCK_CONFLICT / JOB_OVERLAP / MERGE_CONFLICT]
+
+Files Affected:
+- [file1] - locked by [AGENT_X]
+
+My Options:
+A) Wait for locks to release
+B) Reassign my job to avoid these files
+C) Request human coordination
+
+Awaiting guidance.
+          ]]></escalation_format>
+        </conflict_resolution>
+      </multi_agent_coordination>
+
       <spiral>BLUEPRINT -> LINK -> ARCHITECT (SOP first) -> CODE -> TEST -> [PASS: STYLIZE -> TEST -> PASS] or [FAIL: REPAIR -> RETEST]</spiral>
 
       <blast_loop name="B.L.A.S.T.">
