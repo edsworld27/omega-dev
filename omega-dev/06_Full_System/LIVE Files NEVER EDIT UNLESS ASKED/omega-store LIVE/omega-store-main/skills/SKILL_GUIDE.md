@@ -48,3 +48,4 @@ For agentic projects, skills can be scoped to specific agents:
 | Analyst | `analyst-agent.md` | Data analysis and insights |
 | Guardian | `guardian-agent.md` | Relationship preservation and compliance |
 | Orchestrator | `orchestrator-agent.md` | Multi-agent coordination |
+| Claude Code | `claude-agent.md` | Bootstraps Anthropic's CLI to obey Omega System rulings |

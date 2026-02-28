@@ -21,6 +21,12 @@ This document is the authoritative map of all available Kits, Skills, MCPs, and 
 ## 🛠 Skills (`/skills/`)
 *Skills are atomic operational patterns and agentic behaviors.*
 
+### Official References
+- **[CLAUDE_COOKBOOKS_REFERENCE.md](skills/CLAUDE_COOKBOOKS_REFERENCE.md)**: Anthropic official Claude implementation patterns (TIER 1 REFERENCE)
+  - Source: https://github.com/anthropics/claude-cookbooks
+  - Includes: RAG, Tool Use, Vision, Sub-agents, JSON Mode, Prompt Caching, Agent Patterns
+
+### Agent Skills
 - **[analyst-agent.md](file:///Users/eds/Documents/Omega%20Constitution Pack/Omega DEV Panel/06_Full_System/omega-store/skills/analyst-agent.md)**: Deep data and requirement analysis.
 - **[classifier-agent.md](file:///Users/eds/Documents/Omega%20Constitution Pack/Omega DEV Panel/06_Full_System/omega-store/skills/classifier-agent.md)**: Categorization and taxonomy management.
 - **[guardian-agent.md](file:///Users/eds/Documents/Omega%20Constitution Pack/Omega DEV Panel/06_Full_System/omega-store/skills/guardian-agent.md)**: Security and compliance enforcement.

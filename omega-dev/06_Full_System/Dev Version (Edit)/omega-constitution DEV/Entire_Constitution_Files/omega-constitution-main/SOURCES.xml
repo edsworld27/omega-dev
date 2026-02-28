@@ -53,6 +53,33 @@
       <source order="1" path="06_vault/kits/">Approved UI/SaaS/Automation patterns</source>
       <source order="2" path="06_vault/knowledge_vault/">Snippets and lessons learned</source>
       <source order="3">NotebookLM Context (Uploaded PDFs/Docs explicitly tagged as Reference)</source>
+
+      <!-- ANTHROPIC OFFICIAL REFERENCE -->
+      <source order="4" name="Claude Cookbooks" url="https://github.com/anthropics/claude-cookbooks" authority="Anthropic Official">
+        <description>
+          Official Anthropic production-ready patterns for Claude capabilities.
+          MIT Licensed. Tier 1 reference for Claude-specific implementations.
+        </description>
+        <capabilities>
+          <capability name="Classification">Text and data classification techniques</capability>
+          <capability name="RAG">Retrieval Augmented Generation with external knowledge</capability>
+          <capability name="Summarization">Effective text summarization patterns</capability>
+          <capability name="Tool Use">Customer service agents, calculators, SQL integration</capability>
+          <capability name="Vector DBs">Pinecone RAG, Voyage AI embeddings</capability>
+          <capability name="Multimodal">Vision, charts, graphs, forms, PDF extraction</capability>
+          <capability name="Sub-agents">Using Haiku as sub-agent with Opus</capability>
+          <capability name="JSON Mode">Consistent JSON output patterns</capability>
+          <capability name="Prompt Caching">Efficient prompt caching techniques</capability>
+          <capability name="Evaluations">Automated prompt evaluation systems</capability>
+          <capability name="Moderation">Content moderation filter patterns</capability>
+          <capability name="Extended Thinking">Extended reasoning capabilities</capability>
+          <capability name="Agent Patterns">Agent design patterns and orchestration</capability>
+        </capabilities>
+        <usage_rule>
+          When implementing Claude-specific features, ALWAYS check Claude Cookbooks first.
+          These patterns are battle-tested by Anthropic and supersede generic AI tutorials.
+        </usage_rule>
+      </source>
     </tier>
 
     <!-- TIER 4: EXTERNAL VALIDATION -->
@@ -60,6 +87,12 @@
       <description>Where you are allowed to browse/search.</description>
       <source name="Official Documentation Only">e.g., nextjs.org/docs, stripe.com/docs, pypi.org</source>
       <source name="GitHub Issues (Closed/Solved)">For debugging specific errors</source>
+      <source name="Claude Cookbooks" url="https://github.com/anthropics/claude-cookbooks" priority="HIGH">
+        Anthropic's official Claude implementation patterns. PREFERRED over generic AI tutorials.
+      </source>
+      <source name="Anthropic Documentation" url="https://docs.anthropic.com" priority="HIGH">
+        Official Claude API docs, tool use, and best practices.
+      </source>
       <constraint>Do not trust StackOverflow answers older than 18 months without verification.</constraint>
     </tier>
 

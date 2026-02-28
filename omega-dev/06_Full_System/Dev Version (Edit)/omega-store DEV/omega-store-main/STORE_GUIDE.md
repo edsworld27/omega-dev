@@ -88,6 +88,24 @@ Or tell the AI: "My wireframes are at /path/to/files" — works the same way.
 
 ### Skills (Agent Capabilities)
 
+#### Official Reference (TIER 1)
+
+| Reference | File | Source |
+|-----------|------|--------|
+| **Claude Cookbooks** | `CLAUDE_COOKBOOKS_REFERENCE.md` | https://github.com/anthropics/claude-cookbooks |
+
+> **IMPORTANT:** When implementing Claude-specific features, ALWAYS check the Claude Cookbooks reference first. These are Anthropic's official, production-ready patterns.
+
+**Cookbook Capabilities:**
+- RAG (Retrieval Augmented Generation)
+- Tool Use & Integration (Customer Service, SQL, Calculators)
+- Multimodal/Vision (Charts, Forms, PDF Extraction)
+- Sub-agents (Haiku as sub-agent with Opus)
+- JSON Mode, Prompt Caching, Content Moderation
+- Agent Patterns & Orchestration
+
+#### Agent Skills
+
 | Skill | File | Purpose |
 |-------|------|---------|
 | Classifier | `classifier-agent.md` | Categorise, tag, route data |
