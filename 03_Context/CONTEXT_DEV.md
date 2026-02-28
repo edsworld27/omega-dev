@@ -1,6 +1,6 @@
 # Omega DEV Panel: Context & Current State
 
-**Ecosystem Iteration:** V16.28 (The Demo & Showcase Horizon)
+**Ecosystem Iteration:** V16.30 (Nested Kit Architecture)
 **Core Engine:** INSTRUCTOR.xml v8.2
 
 ## Current Development State / Phase
@@ -11,8 +11,9 @@ The ecosystem has gained massive architectural capabilities:
 - Global Hot Swap CMS (Instant 1-file rebranding)
 - NAPO Local SEO Enforcement
 - Project Database Isolation (100% Standalone Output)
-- **Phase 05: Post-Launch Maintenance & Integrations**
-- **Demo Mode: Pure Frontend Rapid Prototyping**
+- Phase 05: Post-Launch Maintenance & Integrations
+- Demo Mode: Pure Frontend Rapid Prototyping
+- **Nested Kits: `website` is physically inside `marketing_agency`**
 
 *(For a comprehensive breakdown of the current Website Kit architecture, agents MUST read `WEBSITE_KIT_EVALUATION.md` in this directory).*
 
