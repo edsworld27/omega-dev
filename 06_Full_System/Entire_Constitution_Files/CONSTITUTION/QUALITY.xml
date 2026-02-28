@@ -108,6 +108,44 @@
       <rationale>Version conflicts are deterministic. If 2 attempts fail, the dependency chain needs human decision.</rationale>
     </error>
 
+    <error code="E8" name="Coordination Error" critical="false">
+      <symptoms>Lock conflict with another agent. Job overlap. Merge conflict between agents. File edited by multiple agents. Race condition in hive operations.</symptoms>
+      <repair_protocol>
+        <step order="1">Check hive/locks/ for active locks on the file</step>
+        <step order="2">Run: python hive_locker.py status --agent-id [YOUR_ID]</step>
+        <step order="3">If lock is stale (no heartbeat >2min): python hive_locker.py cleanup --agent-id [YOUR_ID]</step>
+        <step order="4">Wait 30 seconds and retry lock acquisition</step>
+        <step order="5">If still blocked after 3 retries, check master-job-board.md for job reassignment options</step>
+        <step order="6">Document conflict in blockers/COORDINATION-[JOB_ID].md</step>
+      </repair_protocol>
+      <max_attempts>3</max_attempts>
+      <rationale>Coordination issues involve timing and negotiation. 3 attempts with 30s delays allow for lock release. If still blocked, human arbitration needed.</rationale>
+      <escalation>
+        <trigger>After 3 failed lock acquisition attempts</trigger>
+        <action>Generate STOP REPORT with conflict details, await Master Orchestrator or human decision</action>
+        <note>Only Master Orchestrator (Founder) may use --force flag to override locks</note>
+      </escalation>
+    </error>
+
+    <error code="E9" name="Context Error">
+      <symptoms>SESSION_CONTEXT.md exceeds recommended size. Context window overflow. Stale context causing hallucination. Memory drift between sessions.</symptoms>
+      <repair_protocol>
+        <step order="1">Check SESSION_CONTEXT.md size (warn if >50KB or >1000 lines)</step>
+        <step order="2">Identify stale sections (decisions from completed phases)</step>
+        <step order="3">Archive stale content to 06_vault/context_archive/[date].md</step>
+        <step order="4">Prune SESSION_CONTEXT.md to active phase only</step>
+        <step order="5">Re-summarize essential decisions (keep What matters, remove How we got there)</step>
+        <step order="6">Verify current checkpoint and active phase are clearly stated</step>
+      </repair_protocol>
+      <max_attempts>2</max_attempts>
+      <rationale>Context pruning is systematic. If 2 attempts don't reduce to manageable size, the project scope may be too large for single-session work.</rationale>
+      <thresholds>
+        <warning>SESSION_CONTEXT.md exceeds 50KB or 1000 lines</warning>
+        <critical>SESSION_CONTEXT.md exceeds 100KB or 2000 lines</critical>
+        <action_on_critical>Force archive before proceeding</action_on_critical>
+      </thresholds>
+    </error>
+
   </error_taxonomy>
 
   <!-- ============================================================
@@ -148,11 +186,18 @@
   <classification_rules>
     <description>When an error occurs, classify FIRST, then repair:</description>
     <step order="1">Read the error message and stack trace completely</step>
-    <step order="2">Identify which category (E1-E7) matches</step>
+    <step order="2">Identify which category (E1-E9) matches</step>
     <step order="3">Check the circuit breaker limit for that category</step>
     <step order="4">Follow that category's repair protocol</step>
     <step order="5">If the error spans categories, address the root cause category first</step>
     <step order="6">Log the classification in progress.md for knowledge compounding</step>
+
+    <multi_agent_classification>
+      <description>Special handling for multi-agent scenarios:</description>
+      <rule>E8 (Coordination) takes priority if locks are involved</rule>
+      <rule>E9 (Context) should be checked at session start if resuming work</rule>
+      <rule>Coordination errors may mask underlying E2-E4 errors - resolve E8 first</rule>
+    </multi_agent_classification>
   </classification_rules>
 
   <!-- ============================================================

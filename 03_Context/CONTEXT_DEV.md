@@ -55,4 +55,8 @@ Make Omega fully open-source and AI-tool agnostic:
 
 ---
 
+## Persistent Memory
+- **Last Evaluation:** `USER SPACE/dev-work/evaluations/EVALUATION_INDEX.md`
+- **Active Tracker:** `USER SPACE/dev-work/TRACKER.md`
+
 *This file is our SESSION_CONTEXT.md for constitution development.*
