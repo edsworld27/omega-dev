@@ -266,7 +266,68 @@ The kit determines the project structure, not this generic example.
 
 ---
 
-## STEP 6: Confirm & Handoff
+## STEP 6: GitHub & Publishing Setup
+
+```
+═══════════════════════════════════════════════════════════
+  VERSION CONTROL SETUP
+═══════════════════════════════════════════════════════════
+
+  Do you want to set up GitHub publishing?
+
+  1. YES — I have a GitHub repo (or will create one)
+  2. LATER — Skip for now, I'll set it up myself
+  3. NO GIT — I don't need version control
+
+  Reply with: 1, 2, or 3
+═══════════════════════════════════════════════════════════
+```
+
+### If YES (1):
+```
+═══════════════════════════════════════════════════════════
+  GITHUB CONFIGURATION
+═══════════════════════════════════════════════════════════
+
+  I'll create your publish.config.json
+
+  Please provide:
+  1. Repository URL (e.g., https://github.com/you/project.git)
+  2. Branch name (default: main)
+
+  Or paste your GitHub repo URL:
+═══════════════════════════════════════════════════════════
+```
+
+**After they provide the URL, create:**
+- `publish.config.json` in project root
+- `.gitignore` with standard entries
+- Initialize git if needed
+
+```
+═══════════════════════════════════════════════════════════
+  PUBLISHING CONFIGURED
+═══════════════════════════════════════════════════════════
+
+  Created:
+  ✅ publish.config.json — Your publishing config
+  ✅ .gitignore — Standard ignore rules
+
+  To publish your project:
+  python python/omega_publish.py "feat: Your commit message"
+
+  Commit types: feat, fix, docs, refactor, test, chore, security
+
+  Ready to continue? (yes)
+═══════════════════════════════════════════════════════════
+```
+
+### If LATER (2) or NO GIT (3):
+Proceed to Step 7.
+
+---
+
+## STEP 7: Confirm & Handoff
 
 ```
 ═══════════════════════════════════════════════════════════
@@ -278,6 +339,7 @@ The kit determines the project structure, not this generic example.
   Starting Point: [Fresh / Have Frontend / Have Backend / etc.]
   Existing Files: [Location if provided]
   Purpose: [Their 1-2 sentence description]
+  Git Setup: [Configured / Skipped / No Git]
 
   Kit Activated: [website / saas / api / automation / none]
 

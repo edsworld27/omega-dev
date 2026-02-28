@@ -17,6 +17,7 @@ When you need to reference specific rules, methodologies, or blueprints, execute
 *   **GitHub Publishing:** `GITHUB_PUBLISHING.xml` (multi-repo sync, commit standards, release management)
 *   **Agent Blueprints:** `blueprints/AGENT_MD.md`, `blueprints/AGENT_WORKFLOW.md`
 *   **Project Documents:** `blueprints/PRD.md`, `blueprints/SOP.md`, `blueprints/TEST_PLAN.md`
+*   **Setup Tasks:** `blueprints/GITHUB_SETUP.task.md` (Git/GitHub configuration)
 *   **Python Tooling:** Built-in automation scripts (e.g., `compressor.py`, `watchdog.py`) are now managed via the external **Omega Claw Plugin**.
     - Repository: [https://github.com/edsworld27/omega-claw](https://github.com/edsworld27/omega-claw)
 *   **Testing:** `/tests/COMPLIANCE_TESTS.md`

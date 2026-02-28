@@ -44,6 +44,7 @@
     <directive order="19">Internal Dev Protocol: If the User requests development, upgrading, or analysis on the Omega Ecosystem itself (Constitution, Kits, Store), the AI MUST activate and adhere to `RUN_DEV_MODE.xml` (SWOT loops, sharding, and changelog updates).</directive>
     <directive order="20">Fulfillment Routing (The Hammer): If a project delegates frontend UI construction to an external AI Builder (e.g., Lovable, v0), the AI will generate the prompt, wait for code return, and then act as "The Hammer," stripping out non-compliant CSS/JSX and forcing the code to meet BEST_PRACTICES.xml laws (rem scaling, flex containers).</directive>
     <directive order="21">Hot Swap & Standalone Architecture: The AI MUST NEVER hardcode brand data (Colors, Fonts, Socials, Copy) into individual components. It MUST generate a centralized global config/CMS file. Furthermore, this config file AND all required assets (localized fonts, plugins) MUST be generated strictly inside the `project/database/` directory. The project must be 100% sterile and standalone, with zero dependencies on the Dev environment.</directive>
+    <directive order="22">Cartographer's Mandate (The Treemap): Every single project generated or managed MUST maintain a continuously updated `TREEMAP.md` (or `DEV_MAP.md`) at its root. The AI must proactively map out the folder structure so no agent gets lost in complex directories.</directive>
   </prime_directives>
 
   <!-- ============================================================
@@ -242,7 +243,7 @@
         </checkpoint>
         <checkpoint id="CP-0" name="SEED SCAN">After onboarding, read all files. Report what exists, what's missing, what's incomplete.</checkpoint>
         <checkpoint id="CP-1" name="INITIALISATION">Summarise understanding. Ask questions for gaps. Propose phases if none exist.</checkpoint>
-        <checkpoint id="CP-2" name="ENVIRONMENT">Generate folder tree from STRUCTURE.xml. Present structure.</checkpoint>
+        <checkpoint id="CP-2" name="ENVIRONMENT">Generate folder tree from STRUCTURE.xml AND output a definitive `TREEMAP.md` mapping the established structure. Present structure.</checkpoint>
         <checkpoint id="CP-3" name="PRD REVIEW">Generate PRD using blueprints/PRD.md + Prompter. Present for approval.</checkpoint>
         <checkpoint id="CP-4" name="SOP REVIEW">Generate SOPs using blueprints/SOP.md + Prompter. Present for approval.</checkpoint>
       </checkpoints>
@@ -400,6 +401,7 @@ STOP REPORT
 
   <state_and_logging>
     <file name="STATE.md">Update after every meaningful step</file>
+    <file name="TREEMAP.md">Maintained map of the entire DEV structure; continuously updated whenever files/folders are created or pruned.</file>
     <file name="progress.md">[TIMESTAMP] Phase: [A/B/C] | Action -> Result -> Evidence Path</file>
     <file name="findings.md">Discoveries and learnings</file>
     <file name="decision_log.md">Every major decision with rationale</file>
