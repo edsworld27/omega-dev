@@ -12,7 +12,7 @@ When you need to reference specific rules, methodologies, or blueprints, execute
 *   **Security Policies:** `SECURITY.xml`
 *   **Prompting & Interaction Rules:** `PROMPTING.xml`, `INSTRUCTOR.xml`
 *   **Architectural Framework:** `FRAMEWORK.xml`, `STRUCTURE.xml`
-*   **Quality & Best Practices:** `QUALITY.xml`, `PRACTICES.xml`
+*   **Quality & Best Practices:** `QUALITY.xml`, `PRACTICES.xml`, `CODING_PRINCIPLES.xml`
 *   **Agent Blueprints:** `blueprints/AGENT_MD.md`, `blueprints/AGENT_WORKFLOW.md`
 *   **Project Documents:** `blueprints/PRD.md`, `blueprints/SOP.md`, `blueprints/TEST_PLAN.md`
 *   **Python Tooling:** Built-in automation scripts (e.g., `compressor.py`, `watchdog.py`) are now managed via the external **Omega Claw Plugin**.

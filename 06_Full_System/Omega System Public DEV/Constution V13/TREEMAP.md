@@ -43,6 +43,7 @@ Constution V10/
 │   ├── PRACTICES.xml           ← Dev practices and standards
 │   ├── PROMPTING.xml           ← Prompt engineering rules
 │   ├── QUALITY.xml             ← Quality gates and checks
+│   ├── CODING_PRINCIPLES.xml   ← AI Coding Standards & Best Practices
 │   ├── SOURCES.xml             ← How to handle external deps
 │   ├── STRUCTURE.xml           ← File/folder conventions
 │   ├── ONBOARDING.md           ← Agent onboarding flow
