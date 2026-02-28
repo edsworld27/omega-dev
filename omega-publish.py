@@ -14,14 +14,14 @@ from pathlib import Path
 COMMIT_MESSAGE = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else "Auto-Sync: God-Mode Master Architecture Update"
 
 MAPPINGS = {
-    "omega-constitution": "https://github.com/edsworld27/omega-constitution.git",
-    "omega-store": "https://github.com/edsworld27/omega-store.git",
-    "Omega Claw v1": "https://github.com/edsworld27/omega-claw.git",
-    "Omega System Public DEV": "https://github.com/edsworld27/Omega-System.git"
+    "omega-constitution LIVE": "https://github.com/edsworld27/omega-constitution.git",
+    "omega-store LIVE": "https://github.com/edsworld27/omega-store.git",
+    "Omega Claw v1 LIVE": "https://github.com/edsworld27/omega-claw.git",
+    "Omega System Public LIVE": "https://github.com/edsworld27/Omega-System.git"
 }
 
 DEV_ROOT = Path(os.path.dirname(os.path.abspath(__file__)))
-SOURCE_DIR = DEV_ROOT / "Projects" / "06_Full_System"
+SOURCE_DIR = DEV_ROOT / "Projects" / "06_Full_System" / "LIVE Files NEVER EDIT UNLESS ASKED"
 TMP_DIR = DEV_ROOT / ".tmp_publish"
 
 print("\n🚀 INITIATING OMEGA GOD-MODE ECOSYSTEM PUBLISH 🚀\n")
