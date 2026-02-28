@@ -1,0 +1,4 @@
+<project name="omega-system">
+    <repository url="https://github.com/edsworld27/Omega-System.git"/>
+    <source_path>.</source_path>
+</project>

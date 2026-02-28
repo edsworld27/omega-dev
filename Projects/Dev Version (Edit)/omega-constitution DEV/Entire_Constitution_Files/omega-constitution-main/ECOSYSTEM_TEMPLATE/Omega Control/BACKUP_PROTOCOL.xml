@@ -1,0 +1,17 @@
+<backup_protocol version="1.0">
+    <!-- OMEGA SYSTEM BACKUP ARCHITECTURE -->
+    <repo_link>https://github.com/edsworld27/omega-backup</repo_link>
+    <storage_strategy>Remote-Only (GitHub)</storage_strategy>
+    <local_policy>Clear local zips immediately after successful push to maintain workspace light-weight.</local_policy>
+    
+    <automation>
+        <interval_minutes>5</interval_minutes>
+        <daemon>omega-backup.py watch</daemon>
+        <scope>Full system snapshot (excluding .git and node_modules)</scope>
+    </automation>
+
+    <undo_procedure>
+        <step>1. Fetch latest snapshot from GitHub repo.</step>
+        <step>2. Run 'python3 omega-backup.py undo' locally.</step>
+    </undo_procedure>
+</backup_protocol>
