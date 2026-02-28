@@ -15,10 +15,10 @@ COMMIT_MESSAGE = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else "Auto-Sync: Go
 
 import xml.etree.ElementTree as ET
 
-DEV_PANEL = Path(os.path.dirname(os.path.abspath(__file__)))
-DEV_ROOT = DEV_PANEL.parent
+DEV_CONTROL = Path(os.path.dirname(os.path.abspath(__file__)))
+DEV_ROOT = DEV_CONTROL.parent
 SOURCE_DIR = DEV_ROOT / "Projects" / "06_Full_System" / "LIVE Files NEVER EDIT UNLESS ASKED"
-TMP_DIR = DEV_PANEL / ".tmp_publish"
+TMP_DIR = DEV_CONTROL / ".tmp_publish"
 
 print("\n🚀 INITIATING OMEGA GOD-MODE ECOSYSTEM PUBLISH 🚀\n")
 

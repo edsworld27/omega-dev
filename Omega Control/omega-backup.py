@@ -12,10 +12,10 @@ from pathlib import Path
 # (ignoring .git and previous backups) and allows you to instantly
 # restore to a previous state if an AI agent or human deletes files.
 
-DEV_PANEL = Path(os.path.dirname(os.path.abspath(__file__)))
-DEV_ROOT = DEV_PANEL.parent
-BACKUP_DIR = DEV_PANEL / "99 Back Up" / "Omega System DEV MODE"
-BACKUP_REPO_ROOT = DEV_PANEL / "99 Back Up"
+DEV_CONTROL = Path(os.path.dirname(os.path.abspath(__file__)))
+DEV_ROOT = DEV_CONTROL.parent
+BACKUP_DIR = DEV_CONTROL / "99 Back Up" / "Omega System DEV MODE"
+BACKUP_REPO_ROOT = DEV_CONTROL / "99 Back Up"
 IGNORE_DIRS = {".git", "99 Back Up", "__pycache__", "node_modules", ".tmp_publish", "omega-dev"}
 
 def ensure_backup_dir():
