@@ -270,6 +270,10 @@
       <directory_enforcement>
         <rule>All application source code, configuration files, package setups, and tests MUST be written exclusively inside the USER SPACE/project/ directory.</rule>
         <rule>The USER SPACE/dev-work/ directory is STRICTLY for AI planning, documentation, seeds, and tracking. NO source code goes there.</rule>
+        <rule>All Omega managed project directories MUST operate on a dual-environment local architecture.</rule>
+        <rule>Create a folder named `Dev Version (Edit)` for all active development and AI mutations.</rule>
+        <rule>Create a folder named `LIVE Files NEVER EDIT UNLESS ASKED` for the production-ready tracked copies.</rule>
+        <rule>Code must ALWAYS be authored in `Dev Version (Edit)`. Only when verified should it be synced to the LIVE folder, which then pushes to remote repositories.</rule>
       </directory_enforcement>
 
       <hive_orchestration_locking>

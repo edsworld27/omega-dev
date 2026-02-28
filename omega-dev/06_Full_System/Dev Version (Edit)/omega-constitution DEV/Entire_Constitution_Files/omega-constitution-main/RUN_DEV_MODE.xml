@@ -28,6 +28,13 @@
         <rule>Master PRD must be updated with the current "System State".</rule>
     </sharding_mandate>
 
+    <architecture_mandate>
+        <rule>All Omega managed project directories MUST operate on a dual-environment local architecture.</rule>
+        <rule>Create a folder named `Dev Version (Edit)` for all active development and AI mutations.</rule>
+        <rule>Create a folder named `LIVE Files NEVER EDIT UNLESS ASKED` for the production-ready tracked copies.</rule>
+        <rule>Code must ALWAYS be authored in `Dev Version (Edit)`. Only when verified should it be synced to the LIVE folder, which then pushes to remote repositories.</rule>
+    </architecture_mandate>
+
     <governance>
         INSTRUCTOR.xml remains the supreme brain. RUN_DEV_MODE.xml provides the operational lens for self-improvement.
     </governance>
