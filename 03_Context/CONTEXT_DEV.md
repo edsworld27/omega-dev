@@ -1,6 +1,6 @@
 # Omega DEV Panel: Context & Current State
 
-**Ecosystem Iteration:** V16.31 (Kit Creation Architecture)
+**Ecosystem Iteration:** V16.33 (System Router & Git Links)
 **Core Engine:** INSTRUCTOR.xml v8.2
 
 ## Current Development State / Phase
@@ -14,7 +14,8 @@ The ecosystem has gained massive architectural capabilities:
 - Phase 05: Post-Launch Maintenance & Integrations
 - Demo Mode: Pure Frontend Rapid Prototyping
 - Nested Kits: `website` is physically inside `marketing_agency`
-- **Kit Creation Protocol consolidated into `kits/make_a_kit/`**
+- Kit Creation Protocol consolidated into `kits/make_a_kit/`
+- **Zero-Install Shell injected with direct GitHub Store Router links**
 
 *(For a comprehensive breakdown of the current Website Kit architecture, agents MUST read `WEBSITE_KIT_EVALUATION.md` in this directory).*
 
