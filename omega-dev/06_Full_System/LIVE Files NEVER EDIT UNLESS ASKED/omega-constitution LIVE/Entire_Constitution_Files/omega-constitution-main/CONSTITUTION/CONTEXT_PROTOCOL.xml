@@ -1,0 +1,17 @@
+<context_protocol version="1.0">
+    <directive name="Granular Memory Architecture">
+        <rule>Project memory MUST be modularized into `.context.md` files within `dev-work/context/modules/`.</rule>
+        <rule>A master `CONTEXT_MAP.md` MUST exist in `dev-work/context/` to serve as the single source of truth for loading context branches.</rule>
+    </directive>
+    <directive name="Branch & Split Protocol">
+        <rule>Monitor the size of all `.context.md` and `.evaluation.md` files.</rule>
+        <rule>If a file exceeds 2000 tokens (~10KB), it MUST be split into a multipart series (e.g., `feature_v1.md`, `feature_v2.md`).</rule>
+        <rule>**HIERARCHICAL SHARDING:** Every 3 documents (context modules or evaluation parts), the AI MUST rotate the files into a new versioned subdirectory (e.g., `dev-work/context/modules/v1_changes/`, `v2_changes/`).</rule>
+        <rule>The `CONTEXT_MAP.md` must link to all parts across their respective versioned folders. Only the most recent "Active" part should be loaded by default.</rule>
+        <rule>Historical parts should be labeled as `[ARCHIVE]` in the map and only read if specific historical data is missing from the active summary.</rule>
+    </directive>
+    <directive name="Context Pruning">
+        <rule>When a task or sprint is marked [COMPLETE], the AI must summarize the result in the `CONTEXT_MAP.md` and unload the detailed task/context files.</rule>
+        <rule>Active context should always prioritize "The Now" and "The Map" over "The History".</rule>
+    </directive>
+</context_protocol>

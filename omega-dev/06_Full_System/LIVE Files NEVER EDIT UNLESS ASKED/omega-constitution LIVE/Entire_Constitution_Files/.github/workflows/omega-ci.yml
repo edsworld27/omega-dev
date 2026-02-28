@@ -1,0 +1,65 @@
+name: Omega Constitution CI/CD
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  omega-constitution-check:
+    name: Run Omega Integrity Monitors
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run Omega Auto-Structure Check
+        run: |
+          echo "Verifying 4-Pillar Architectural Integrity..."
+          # We run the structure watcher once and kill it after 5 seconds to ensure folders exist
+          python3 omega-constitution-v9/CONSTITUTION/python/auto_structure.py &
+          PID=$!
+          sleep 5
+          kill $PID
+          
+      - name: Run Omega Security Scanner
+        run: |
+          echo "Scanning USER SPACE for dropped secrets (.env, keys)..."
+          python3 omega-constitution-v9/CONSTITUTION/python/auto_security.py &
+          PID=$!
+          sleep 5
+          kill $PID
+          
+          # Check if any files got locked by the scanner
+          LOCKED_FILES=$(find omega-constitution-v9/USER\ SPACE -name "*.SECURE_LOCKED")
+          if [ ! -z "$LOCKED_FILES" ]; then
+            echo "🚨 SECURITY VIOLATION DETECTED 🚨"
+            echo "The following files contain raw secrets and were locked:"
+            echo "$LOCKED_FILES"
+            echo "Please remove the secrets and commit again."
+            exit 1
+          else
+            echo "✅ Security Check Passed: No exposed secrets detected."
+          fi
+
+      - name: Verify Index Map (00.help.md)
+        run: |
+          echo "Regenerating Help Map to check for uncommitted architectural changes..."
+          python3 omega-constitution-v9/CONSTITUTION/python/auto_help.py &
+          PID=$!
+          sleep 5
+          kill $PID
+          
+          if [[ `git status --porcelain` ]]; then
+            echo "⚠️ Warning: The 00.help.md index file is out of date. The CI regenerated it automatically."
+            echo "Your PR is structurally sound, but remember to run the daemon locally next time."
+          else
+            echo "✅ Index Map is perfectly synchronized."
+          fi

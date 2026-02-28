@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta_dev_mode>
+  <metadata>
+    <version>1.0</version>
+    <purpose>Governs how AI agents document and track the meta-development of the Omega Ecosystem (Constitution, Store, Claw).</purpose>
+  </metadata>
+
+  <core_directive>
+    This file is strictly for collaborative development between the system architect (Eds) and the AI assistant building out the Omega Ecosystem.
+    When the user says "log something" or asks for an evaluation/implementation, the documentation must be written to the active dev directories inside `Omega DEV BUILD/`.
+  </core_directive>
+
+  <directory_mapping>
+    <evaluations>Omega DEV BUILD/Evaluations/</evaluations>
+    <implementations>Omega DEV BUILD/Implementations/</implementations>
+    <testing>Omega DEV BUILD/Testing/</testing>
+    <changelogs>Omega DEV BUILD/Changle Log/</changelogs>
+  </directory_mapping>
+
+  <operational_rules>
+    <rule id="discrete_logging">
+      <instruction>Do not append to one giant file. Create a new markdown file for every discrete task.</instruction>
+      <naming_convention>Filenames MUST include the version number and a short description (e.g., `v10.1.0_testing_loop.md`).</naming_convention>
+    </rule>
+
+    <rule id="changelog_protocol">
+      <instruction>Whenever the user says "log something" or "write a changelog".</instruction>
+      <action>Create a new file in `Omega DEV BUILD/Changle Log/` (e.g., `v10.x.x_feature_update.md`).</action>
+      <content>State the exact version, list the modified files, and describe the feature added or bug fixed.</content>
+    </rule>
+
+    <rule id="evaluations_protocol">
+      <instruction>When asked to do a "Full Evaluation" of a system or component.</instruction>
+      <action>Create a new file in `Omega DEV BUILD/Evaluations/`.</action>
+      <content>Detail strengths, weaknesses, remaining gaps, and assign an objective score.</content>
+    </rule>
+
+    <rule id="implementations_protocol">
+      <instruction>When designing a new feature, architecture, or ecosystem component before execution.</instruction>
+      <action>Create a new file in `Omega DEV BUILD/Implementations/`.</action>
+      <content>Map out the plan, the exact files involved, and dependencies.</content>
+    </rule>
+
+    <rule id="testing_protocol">
+      <instruction>When running tests on a freshly built component.</instruction>
+      <action>Create a new file in `Omega DEV BUILD/Testing/`.</action>
+      <content>Document test steps, expected outcomes, and actual outcomes.</content>
+    </rule>
+  </operational_rules>
+</meta_dev_mode>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aesthetic_layer version="1.0">
+    <description>
+        Reusable UI/UX aesthetic tokens and CSS presets for high-end web projects.
+    </description>
+
+    <tokens>
+        <token name="highlight-color">#3b82f6</token> <!-- Brand Blue -->
+        <token name="scrollbar-width">8px</token>
+        <token name="scrollbar-track">rgba(0,0,0,0.05)</token>
+        <token name="scrollbar-thumb">rgba(0,0,0,0.2)</token>
+        <token name="animation-spring">cubic-bezier(0.175, 0.885, 0.32, 1.275)</token>
+        <token name="animation-smooth">cubic-bezier(0.4, 0, 0.2, 1)</token>
+    </tokens>
+
+    <css_presets>
+        <preset name="custom-scrollbar"><![CDATA[
+/* Custom Side Scroller */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width, 8px);
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track, rgba(0,0,0,0.05));
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb, rgba(0,0,0,0.2));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover, rgba(0,0,0,0.3));
+}
+        ]]></preset>
+
+        <preset name="selection-highlight"><![CDATA[
+/* Custom Highlight Color */
+::selection {
+  background: var(--highlight-color, #3b82f6);
+  color: #fff;
+}
+        ]]></preset>
+
+        <preset name="hover-lift"><![CDATA[
+/* Hover Animation: Lift & Spring */
+.hover-lift {
+  transition: transform 0.3s var(--animation-spring, cubic-bezier(0.175, 0.885, 0.32, 1.275));
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+        ]]></preset>
+
+        <preset name="fade-in-stagger"><![CDATA[
+/* Staggered Fade-in Entry */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.stagger-item {
+  animation: fadeIn 0.5s var(--animation-smooth, ease-out) forwards;
+  opacity: 0;
+}
+        ]]></preset>
+    </css_presets>
+</aesthetic_layer>
