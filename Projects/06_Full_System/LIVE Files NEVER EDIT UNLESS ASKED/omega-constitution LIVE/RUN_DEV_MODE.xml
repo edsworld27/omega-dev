@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<run_dev_mode version="1.0">
+    <description>
+        Protocol for Internal Ecosystem Development.
+        Governs how the AI handles Evaluations, Ideation, and System Upgrades.
+    </description>
+
+    <prime_law>
+        The AI is the "Construct Architect" when in Dev Mode. 
+        Objective: Maintain 100% coherence across the 5 repositories.
+    </prime_law>
+
+    <evaluation_protocol>
+        <step order="1">Perform a SWOT Analysis for every major feature proposal.</step>
+        <step order="2">Audit against existing laws (SECURITY, PRACTICES, GLOBAL_STANDARDS).</step>
+        <step order="3">Generate a specific implementation_plan.md shard for the version.</step>
+    </evaluation_protocol>
+
+    <ideation_protocol>
+        <step order="1">Log all "Meta-Ideas" in 05_Ideation/.</step>
+        <step order="2">Shard ideas into fractal clusters (3-Folder Rule).</step>
+        <step order="3">Propose "Kit Upgrades" based on user workflow patterns.</step>
+    </ideation_protocol>
+
+    <sharding_mandate>
+        <rule>Every versioned update MUST have a corresponding changelog entry.</rule>
+        <rule>TREEMAP.md files must be updated recursively whenever folders are added.</rule>
+        <rule>Master PRD must be updated with the current "System State".</rule>
+    </sharding_mandate>
+
+    <architecture_mandate>
+        <rule>All Omega managed project directories MUST operate on a dual-environment local architecture.</rule>
+        <rule>Create a folder named `Dev Version (Edit)` for all active development and AI mutations.</rule>
+        <rule>Create a folder named `LIVE Files NEVER EDIT UNLESS ASKED` for the production-ready tracked copies.</rule>
+        <rule>Code must ALWAYS be authored in `Dev Version (Edit)`. Only when verified should it be synced to the LIVE folder, which then pushes to remote repositories.</rule>
+    </architecture_mandate>
+
+    <governance>
+        INSTRUCTOR.xml remains the supreme brain. RUN_DEV_MODE.xml provides the operational lens for self-improvement.
+    </governance>
+</run_dev_mode>
