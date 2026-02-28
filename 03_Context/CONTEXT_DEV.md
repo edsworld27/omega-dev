@@ -11,8 +11,10 @@ The ecosystem has gained massive architectural capabilities:
 - Global Hot Swap CMS (Instant 1-file rebranding)
 - NAPO Local SEO Enforcement
 - Project Database Isolation (100% Standalone Output)
-- Phase 05: Post-Launch Maintenance & Integrations
+- **Phase 05: Post-Launch Maintenance & Integrations**
 - **Demo Mode: Pure Frontend Rapid Prototyping**
+
+*(For a comprehensive breakdown of the current Website Kit architecture, agents MUST read `WEBSITE_KIT_EVALUATION.md` in this directory).*
 
 ## Immediate Focus (Next User Action)
 1. **The Ultimate Stress Test:** Open a completely fresh, sterile IDE window.
