@@ -20,6 +20,12 @@ def ignite():
         cwd="jarvis/dashboard-next"
     )
     
+    # 3. Start Omega Backup Watcher (5-min pulse)
+    print("🛡️  Starting Omega Backup Watcher...")
+    backup_proc = subprocess.Popen(
+        [sys.executable, "omega-backup.py", "watch"]
+    )
+    
     print("\n✅ ECOSYSTEM IGNITED.")
     print("🔗 API: http://localhost:8000")
     print("🔗 DASHBOARD: http://localhost:3000")
@@ -32,6 +38,7 @@ def ignite():
         print("\n🛑 SHUTTING DOWN...")
         bridge_proc.terminate()
         frontend_proc.terminate()
+        backup_proc.terminate()
         print("✅ ECOSYSTEM COLD.")
 
 if __name__ == "__main__":

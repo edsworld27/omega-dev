@@ -14,6 +14,7 @@ from pathlib import Path
 
 DEV_ROOT = Path(os.path.dirname(os.path.abspath(__file__)))
 BACKUP_DIR = DEV_ROOT / "99 Back Up" / "Omega System DEV MODE"
+BACKUP_REPO_ROOT = DEV_ROOT / "99 Back Up"
 IGNORE_DIRS = {".git", "99 Back Up", "__pycache__", "node_modules", ".tmp_publish", "omega-dev"}
 
 def ensure_backup_dir():
@@ -56,6 +57,15 @@ def create_backup(message):
                     zipf.write(file_path, arcname)
                     
         print(f"✅ Backup created successfully at: {zip_path.relative_to(DEV_ROOT)}\n")
+        
+        # Trigger Git Push
+        push_to_git(filename)
+        
+        # Clear local zip after push (User mandate: keep local clean, use git for storage)
+        if zip_path.exists():
+            os.remove(zip_path)
+            print(f"🧹 Local zip cleared. Snapshot persistent in GitHub repository.")
+            
         cleanup_old_backups()
     except Exception as e:
         print(f"\n❌ Failed to create backup: {e}\n")
@@ -149,22 +159,30 @@ def check_for_changes(last_mtime):
                 
     return max_mtime, changed
 
+def push_to_git(filename):
+    """Commits and pushes the new snapshot to the backup repository."""
+    import subprocess
+    print(f"🚀 Pushing {filename} to GitHub Backup Repo...")
+    try:
+        subprocess.run(["git", "add", "."], cwd=BACKUP_REPO_ROOT, check=True)
+        subprocess.run(["git", "commit", "-m", f"Automated Backup: {filename}"], cwd=BACKUP_REPO_ROOT, check=True)
+        subprocess.run(["git", "push", "origin", "main"], cwd=BACKUP_REPO_ROOT, check=True)
+        print("✅ Push complete.")
+    except Exception as e:
+        print(f"❌ Git push failed: {e}")
+
 def watch_directory():
     import time
-    print("\n👁️  Omega Watcher Started. Monitoring for file changes every 15 seconds...")
-    print("This will keep a rolling window of 10 backups. Press Ctrl+C to stop.\n")
+    interval = 300  # 5 minutes
+    print(f"\n👁️  Omega Watcher Started. Automated pulses every {interval/60} minutes...")
+    print("Backups will be committed to GitHub and cleared locally. Press Ctrl+C to stop.\n")
     
-    last_mtime, _ = check_for_changes(0)
-                    
     try:
         while True:
-            time.sleep(15)
-            new_mtime, changed = check_for_changes(last_mtime)
-            if changed:
-                print(f"\n🔄 File change detected! Triggering auto-snapshot...")
-                create_backup("Auto_Save")
-                # Reset last_mtime based on new state after taking backup
-                last_mtime, _ = check_for_changes(new_mtime)
+            print(f"⏳ Next pulse in {interval/60} minutes...")
+            time.sleep(interval)
+            print(f"\n🔄 Pulse triggered! Creating timed snapshot...")
+            create_backup("Timed_Pulse")
             
     except KeyboardInterrupt:
         print("\n🛑 Omega Watcher stopped.\n")
