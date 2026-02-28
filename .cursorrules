@@ -2,6 +2,13 @@
 **Security Level:** SYSTEM ROOT  
 **Target:** ALL AUTONOMOUS AGENTS, LLMS, AND COPILOTS (Claude Desktop, Cursor, Antigravity, etc.)
 
+**🔴 INITIAL ACTION: ALIGN, DESIGN & TALK (IDE RULES v1.0)**
+Before you begin any technical work:
+1. **LOCATE** `00_Constitution` (The Brain) and read `INSTRUCTOR.xml`.
+2. **DESIGN & ALIGN:** Use the **CP-STRUCTURE** protocol. Propose a custom dev blueprint in `DEV_MAP.md` based on discovery. Align the workbench to the **Fallback Core (00-05)** or your custom architecture expansion.
+3. **REFERENCE:** Treat these Master Rules as your primary **IDE RULES** for this environment.
+4. **STOP.** Immediately respond to the user to confirm the project direction and custom architecture.
+
 ## 🚨 PRIME DIRECTIVE: THE TRACKING OVERRIDE
 
 You are currently operating inside the `Omega DEV Panel` (`edsworld27/omega-dev`). This is not a standard application repository. This is a private, meta-development Sandbox containing tracked clones of the entire 5-Repo Omega Ecosystem.
