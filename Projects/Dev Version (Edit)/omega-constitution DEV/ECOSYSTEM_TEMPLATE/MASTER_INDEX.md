@@ -26,8 +26,7 @@ omega-system/
 │       ├── python/           # Automation scripts
 │       └── 03_Context/       # Session tracking
 ├── Projects/
-│   ├── Dev Version (Edit)/   # Local editing (dev only)
-│   └── LIVE Files/           # GitHub repo pointers
+│   └── (your projects here)
 └── MASTER_INDEX.md           # This file
 ```
 

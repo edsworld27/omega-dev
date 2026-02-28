@@ -50,3 +50,4 @@ For agentic projects, skills can be scoped to specific agents:
 | Orchestrator | `orchestrator-agent.md` | Multi-agent coordination |
 | Claude Code | `claude-agent.md` | Bootstraps Anthropic's CLI to obey Omega System rulings |
 | Archivist | `archivist-agent.md` | The AGI hippocampus. Extracts local memory and new workflows, pushing them entirely to private repos/local context to protect the immutable Constitution. |
+| Awesome Skills | `claude-awesome-skills.md` | Direct bridge to the community-curated 'Awesome Claude Skills' repository for rapidly acquiring new specific workflow capabilities. |

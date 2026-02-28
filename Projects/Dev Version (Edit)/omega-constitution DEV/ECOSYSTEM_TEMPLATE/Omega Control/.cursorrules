@@ -1,0 +1,21 @@
+# OMEGA SYSTEM - CURSOR RULES
+
+## First Actions
+
+1. Read context: `00 Rules/03_Context/CONTEXT_DEV.md`
+2. Fetch constitution from GitHub: https://github.com/edsworld27/omega-constitution
+3. Follow INSTRUCTOR.xml rules
+
+## The Constitution
+
+Lives on GitHub (NOT local):
+https://raw.githubusercontent.com/edsworld27/omega-constitution/main/INSTRUCTOR.xml
+
+## Local Context
+
+Session state tracked in: `00 Rules/03_Context/CONTEXT_DEV.md`
+
+## Key URLs
+
+- Constitution: https://github.com/edsworld27/omega-constitution
+- Store: https://github.com/edsworld27/omega-store

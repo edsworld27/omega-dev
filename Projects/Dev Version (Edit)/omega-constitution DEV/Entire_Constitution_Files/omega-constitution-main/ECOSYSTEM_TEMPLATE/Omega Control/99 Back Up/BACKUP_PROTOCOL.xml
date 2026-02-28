@@ -1,7 +1,0 @@
-<backup_protocol version="2.0">
-    <repo_link>https://github.com/edsworld27/omega-backup</repo_link>
-    <storage_strategy>Remote-Only (GitHub)</storage_strategy>
-    <pulse_interval>300s</pulse_interval>
-    <last_sync_status>Automated</last_sync_status>
-    <local_clean_policy>EXHAUSTIVE (Zero persistent zips)</local_clean_policy>
-</backup_protocol>
