@@ -14,8 +14,8 @@ from pathlib import Path
 
 DEV_PYTHON = Path(os.path.dirname(os.path.abspath(__file__)))
 DEV_ROOT = DEV_PYTHON.parent.parent
-BACKUP_DIR = DEV_ROOT / "99 Back Up" / "Omega System DEV MODE"
-BACKUP_REPO_ROOT = DEV_ROOT / "99 Back Up"
+BACKUP_DIR = DEV_ROOT / "Omega Control" / "99 Back Up" / "Omega System DEV MODE"
+BACKUP_REPO_ROOT = DEV_ROOT / "Omega Control" / "99 Back Up"
 IGNORE_DIRS = {".git", "99 Back Up", "__pycache__", "node_modules", ".tmp_publish", "omega-dev"}
 
 def ensure_backup_dir():

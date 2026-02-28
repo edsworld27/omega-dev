@@ -10,7 +10,7 @@ def ignite():
     print("⚡ Starting Bridge API (FastAPI)...")
     script_dir = os.path.dirname(os.path.abspath(__file__))
     workspace_root = os.path.abspath(os.path.join(script_dir, "../../"))
-    jarvis_root = os.path.join(workspace_root, "FULL PROJECTS/Projects/06_Full_System/Dev Version (Edit)/Omega Claw v1 DEV/jarvis")
+    jarvis_root = os.path.join(workspace_root, "Projects/Dev Version (Edit)/Omega Claw v1 DEV/jarvis")
     
     bridge_proc = subprocess.Popen(
         [sys.executable, "-m", "uvicorn", "main:app", "--port", "8000", "--reload"],

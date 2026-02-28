@@ -17,7 +17,7 @@ import xml.etree.ElementTree as ET
 
 DEV_PYTHON = Path(os.path.dirname(os.path.abspath(__file__)))
 DEV_ROOT = DEV_PYTHON.parent.parent
-SOURCE_DIR = DEV_ROOT / "FULL PROJECTS" / "Projects" / "06_Full_System" / "LIVE Files"
+SOURCE_DIR = DEV_ROOT / "Projects" / "LIVE Files"
 TMP_DIR = DEV_ROOT / ".tmp_publish"
 
 print("\n🚀 INITIATING OMEGA GOD-MODE ECOSYSTEM PUBLISH 🚀\n")

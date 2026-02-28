@@ -47,13 +47,13 @@ st.markdown("""
 # --- PATHS ---
 RULES_DIR = Path(__file__).parent
 WORKSPACE_ROOT = RULES_DIR.parent.parent
-JARVIS_DIR = WORKSPACE_ROOT / "FULL PROJECTS" / "Projects" / "06_Full_System" / "Dev Version (Edit)" / "Omega Claw v1 DEV" / "jarvis"
+JARVIS_DIR = WORKSPACE_ROOT / "Projects" / "Dev Version (Edit)" / "Omega Claw v1 DEV" / "jarvis"
 CONFIG_FILE = JARVIS_DIR / "CONFIG.md"
 MEMORY_BANK = JARVIS_DIR / "OMEGA_MEMORY_BANK.md"
 
 # Hive Path (from dev version edit)
-HIVE_DIR = WORKSPACE_ROOT / "FULL PROJECTS" / "Projects" / "06_Full_System" / "Dev Version (Edit)" / "omega-constitution DEV" / "Entire_Constitution_Files" / "USER SPACE" / "dev-work" / "hive"
-SECURITY_SCRIPT = WORKSPACE_ROOT / "FULL PROJECTS" / "Projects" / "06_Full_System" / "Dev Version (Edit)" / "omega-constitution DEV" / "Entire_Constitution_Files" / "omega-constitution-main" / "python" / "auto_security.py"
+HIVE_DIR = WORKSPACE_ROOT / "Projects" / "Dev Version (Edit)" / "omega-constitution DEV" / "Entire_Constitution_Files" / "USER SPACE" / "dev-work" / "hive"
+SECURITY_SCRIPT = WORKSPACE_ROOT / "Projects" / "Dev Version (Edit)" / "omega-constitution DEV" / "Entire_Constitution_Files" / "omega-constitution-main" / "python" / "auto_security.py"
 
 # Absolute path to the conversation task file
 TASK_FILE = Path("/Users/eds/.gemini/antigravity/brain/be8c1bd9-adb6-424d-a58b-f7f1254dad83/task.md")

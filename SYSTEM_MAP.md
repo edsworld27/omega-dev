@@ -3,7 +3,7 @@
 ```mermaid
 graph TD
     subgraph "Phase 1: Entry"
-        A[Pilot] -->|Drops Files| B["/00_Drop_Zone"]
+        A[Pilot] -->|Drops Files| B["00 User/00_Drop_Zone"]
         B -->|Ingestion| C["/Omega Control/jarvis"]
     end
 
@@ -20,7 +20,7 @@ graph TD
     end
 
     subgraph "Phase 4: Output"
-        C -->|Final Pack| G["/01_Send_Off"]
+        C -->|Final Pack| G["00 User/01_Send_Off"]
         G -->|Handoff| H[Pilot / Live Environment]
     end
 
@@ -31,7 +31,7 @@ graph TD
 ```
 
 ### 🧭 Navigation Sovereignty
-- **Primary Hub**: [Omega Control](file:///Volumes/Internal/Projects/Omega%20System/Omega%20System%20DEV%20MODE/Omega%20Control/)
-- **Production Skeleton**: [Projects](file:///Volumes/Internal/Projects/Omega%20System/Omega%20System%20DEV%20MODE/Projects/)
-- **Input/Output**: [00_Drop_Zone](file:///Volumes/Internal/Projects/Omega%20System/Omega%20System%20DEV%20MODE/00_Drop_Zone/) | [01_Send_Off](file:///Volumes/Internal/Projects/Omega%20System/Omega%20System%20DEV%20MODE/01_Send_Off/)
+- **Primary Hub**: [Omega Control](file:///Volumes/Internal/Projects/Omega%20System/Omega%20Control/)
+- **Production Skeleton**: [Projects](file:///Volumes/Internal/Projects/Omega%20System/Projects/)
+- **Input/Output**: [00_Drop_Zone](file:///Volumes/Internal/Projects/Omega%20System/00%20User/00_Drop_Zone/) | [01_Send_Off](file:///Volumes/Internal/Projects/Omega%20System/00%20User/01_Send_Off/)
 ```
