@@ -1,0 +1,4 @@
+<project name="omega-constitution">
+    <repository url="https://github.com/edsworld27/omega-constitution.git"/>
+    <source_path>Omega Control/00_Constitution</source_path>
+</project>

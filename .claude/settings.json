@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '═══════════════════════════════════════' && echo '  OMEGA CONSTITUTION ACTIVE' && echo '═══════════════════════════════════════' && echo '' && echo '  Type /omega to initialize full system' && echo '  Or just start working - I follow the constitution.' && echo '' && cat 'Omega System DEV MODE/03_Context/CONTEXT_DEV.md' 2>/dev/null | head -30 || echo ''"
+          }
+        ]
+      }
+    ]
+  }
+}
