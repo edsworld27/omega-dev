@@ -15,7 +15,11 @@ You are currently operating inside the `Omega DEV Panel` (`edsworld27/omega-dev`
 
 By default, AI Agents (like Antigravity or Cursor) attempt to write their internal "thoughts," "tasks," or "checklists" into hidden system folders (e.g., `~/.gemini/antigravity/brain/...` or `.cursor/`).
 
-**THIS BEHAVIOR IS STRICTLY FORBIDDEN IN THE DEV PANEL.**
+**🔴 INITIATION SEQUENCE: ONBOARDING & SETUP (OMEGA PROMPTER)**
+Before you build anything, you MUST:
+1. **INTERVIEW:** Use the **4-D Methodology** from `06_Full_System/omega-constitution/PROMPTING.xml` to extract high-resolution requirements.
+2. **DIAGNOSE:** Audit the user's intent for gaps. No PRDs or phases until the requirements are crystalline.
+3. **CP-STRUCTURE:** Propose the custom Dev Layout (04_Implementations/) before sharding or code generation.
 
 **🔴 CRITICAL SYSTEM RULE: THE FALLBACK CORE (00-05)**
 - **00_Constitution:** Supreme Rules & Brain. [LOCATE FIRST]
