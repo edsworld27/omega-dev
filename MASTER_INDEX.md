@@ -14,7 +14,7 @@
 - **Send/Receive**: [`00_Send_Receive`](file:///Volumes/Internal/Projects/Omega%20System/Omega%20System%20DEV%20MODE/Omega%20Control/00_Send_Receive/) (Dedicated I/O for the core).
 - **Constitution**: System laws and behavioral guardrails.
 - **Backups**: Remote-Only GitHub snapshot registry.
-- **Ignition**: [`omega-ignite.py`](file:///Volumes/Internal/Projects/Omega%20System/Omega%20Control/Project%20Python/omega-ignite.py) (The system heartbeat).
+- **Ignition**: [`omega-ignite.py`](file:///Volumes/Internal/Projects/Omega%20System/Omega%20Control/00%20Rules/omega-ignite.py) (The system heartbeat).
 
 ### 📁 [Projects](file:///Volumes/Internal/Projects/Omega%20System/Omega%20System%20DEV%20MODE/Projects/)
 *The High-Fidelity Creative Production skeleton.*
@@ -43,5 +43,5 @@
 
 ## ⚡ System Igniters
 
-- **Full Ignition**: `python3 "Omega Control/Project Python/omega-ignite.py"`
-- **Global Sync**: `python3 "Omega Control/Project Python/omega-publish.py"`
+- **Full Ignition**: `python3 "Omega Control/00 Rules/omega-ignite.py"`
+- **Global Sync**: `python3 "Omega Control/00 Rules/omega-publish.py"`
