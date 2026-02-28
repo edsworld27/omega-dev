@@ -1,47 +1,66 @@
-# 3D SCROLLYTELLING.task.md
+# 3D SCROLLYTELLING BLUEPRINT.task.md
 
-## FOR THE USER
-This task implements a world-class, Awwwards-level 3D scrollytelling experience. It uses a high-performance HTML5 Canvas to playback an image sequence (120+ frames) that is linked to the user's scroll progress.
+## 💎 RESOURCE GUIDE: ANIMATED WEBSITE ASSETS
+These specifications define the visual DNA of the 3D experience. Every project must generate or provide these three core components.
 
-**Instructions:**
-1. Drop your 120-frame image sequence into `/public/sequence/` (naming: `frame_0.webp` to `frame_119.webp`).
-2. Run this task to generate the `ScrollyCanvas` component and integrate it into your landing page.
-3. Ensure your background is set to `#050505` for a seamless floating effect.
+### 1) Start Frame (The Hero Hook)
+- **Concept**: High-quality product image floating in center frame.
+- **Lighting**: Clean, soft studio lighting with glossy highlights; sharp branding/details.
+- **Style**: Modern Luxury/DTC aesthetic; minimal, distraction-free.
+- **Background**: Pure solid `#050505` (The Void).
+- **Framing**: Negative space around product for motion-tracking/cropping.
+
+### 2) End Frame (The Reveal Shot)
+- **Concept**: Cinematic "inner world" reveal via exploded technical view.
+- **Composition**: Every major component separated and aligned along a clear axis.
+- **Visual Style**: Hyper-realistic, ultra-sharp focus, studio rim lighting (Apple-style).
+- **Goal**: Communicate "Engineered, Intentional, World-Class."
+
+### 3) Transition Flow (Google Flow)
+- **Concept**: Smooth, cinematic transition from Assembled → Exploded.
+- **Logic**: 
+    - Begin with mid-rotation pose.
+    - Gradually introduce primary elements/layers emerging from behind.
+    - Halfway mark: Introduce "Energy Effect" (light pulse/air displacement) wrapping product.
+    - End: Perfect alignment in the exploded composition.
 
 ---
 
-## FOR THE AI
+## 🤖 ANTIGRAVITY SYSTEM PROMPT: 3D CREATIVE DEVELOPER
 
-### OBJECTIVE
-Build a premium scrollytelling experience using Next.js 14, Framer Motion, and Canvas.
+### ✅ ACT AS
+A world-class Creative Developer (Awwwards-level) specializing in Next.js, Framer Motion, and scroll-linked canvas animations.
 
-### TECHNICAL REQUIREMENTS
-1.  **Framework**: Next.js 14 (App Router), Tailwind CSS.
-2.  **Animation**: Framer Motion `useScroll` and `useSpring`.
-3.  **Canvas**: Dedicated `ScrollyCanvas.tsx` component.
-4.  **Loading**: Preload all images and show a progress-indexed loading state.
-5.  **Performance**: 120fps smooth interpolation with `stiffness: 100`, `damping: 30`.
+### 🎯 THE TASK
+Build a premium scrollytelling landing page using a scroll-linked image sequence (120-frame) mapped to an HTML5 Canvas.
 
-### IMPLEMENTATION STEPS
-1.  **Canvas Wrapper**:
-    - `height: 400vh` for scroll duration.
-    - Sticky `top-0` canvas covering the viewport.
-2.  **Image Loading**:
-    - Fetch and store images in a persistent `useRef` array.
-    - Track load progress for the splash screen.
-3.  **Scroll Mapping**:
-    - Map `scrollYProgress` (0.0 to 1.0) to frame index `Math.floor(p * 120)`.
-    - Apply `useSpring` to the progress value to eliminate scroll jitter.
-4.  **Text Overlays (Beats)**:
-    - Implement 4 narrative beats triggered at specific scroll ranges:
-        - Beat A: 0.0 - 0.2
-        - Beat B: 0.25 - 0.45
-        - Beat C: 0.5 - 0.7
-        - Beat D: 0.75 - 0.95
-    - Each beat fades in/out using `useTransform`.
+### 🧰 TECH STACK
+- **Core**: Next.js 14, Tailwind CSS, Framer Motion.
+- **Engine**: HTML5 Canvas with `useSpring` (stiffness: 100, damping: 30) for 60fps smoothing.
 
-### SUCCESS CRITERIA
-- Zero flicker between frames.
-- Perfect blending with `#050505` background.
-- Fully responsive canvas scaling (contain/cover logic).
-- TypeScript types for all animation state.
+### 🎨 VISUAL DIRECTION (NON-NEGOTIABLE)
+- **Seamless Blending**: Page background MUST match sequence background EXACTLY (`#050505`).
+- **Typography**: Inter/SF Pro, tracking-tight, luxury minimalist.
+- **Palette**: Void-BG (#050505), Headings (white/90), Body (white/60).
+
+### 🧩 IMPLEMENTATION DETAILS
+
+#### 1) Sticky Canvas Container
+- `height: 400vh` wrapper.
+- Sticky, full-screen `<canvas>` with "contain" fit logic.
+
+#### 2) Scroll-Linked Logic
+- Map `scrollYProgress` (0.0 → 1.0) to frame index `Math.floor(p * 120)`.
+- Preload all images; show animated loading bar before reveal.
+
+#### 3) Text Overlays (Scrollytelling Beats)
+- Beat A (0–20%): Hero word/phrase (huge, centered).
+- Beat B (25–45%): Feature 1 (left aligned).
+- Beat C (50–70%): Feature 2 (right aligned).
+- Beat D (75–95%): CTA (centered).
+- *Animation*: Opacity [start, +0.1, -0.1, end] → [0, 1, 1, 0]; Enter `y: 20px → 0`.
+
+### ✨ POLISH & PERFORMANCE
+- "Scroll to Explore" indicator fades out by 10%.
+- Custom dark scrollbar with subtle hover.
+- Proper canvas context disposal on unmount.

@@ -100,6 +100,22 @@ Final context:
 
 ---
 
+### Batch 5: 3D & Animation (Optional)
+```
+If we are activating 3D Scrollytelling Mode:
+
+1. **Do you have your 120-frame sequence ready?**
+   - Yes, in /public/sequence/
+   - I need to generate it based on a Start/End frame blueprint
+   - No, let's use a placeholder
+
+2. **Start/End Specifications:**
+   - Have you defined the 'Assembled' vs 'Exploded' components?
+   - Is your background locked to #050505 for the seamless void?
+```
+
+---
+
 ## 4. EVALUATION MATRIX
 
 After discovery, score the project against WEBSITE_KIT.md requirements:
