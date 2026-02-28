@@ -1,6 +1,6 @@
 # Omega DEV Panel: Context & Current State
 
-**Ecosystem Iteration:** V16.30 (Nested Kit Architecture)
+**Ecosystem Iteration:** V16.31 (Kit Creation Architecture)
 **Core Engine:** INSTRUCTOR.xml v8.2
 
 ## Current Development State / Phase
@@ -13,7 +13,8 @@ The ecosystem has gained massive architectural capabilities:
 - Project Database Isolation (100% Standalone Output)
 - Phase 05: Post-Launch Maintenance & Integrations
 - Demo Mode: Pure Frontend Rapid Prototyping
-- **Nested Kits: `website` is physically inside `marketing_agency`**
+- Nested Kits: `website` is physically inside `marketing_agency`
+- **Kit Creation Protocol consolidated into `kits/make_a_kit/`**
 
 *(For a comprehensive breakdown of the current Website Kit architecture, agents MUST read `WEBSITE_KIT_EVALUATION.md` in this directory).*
 
