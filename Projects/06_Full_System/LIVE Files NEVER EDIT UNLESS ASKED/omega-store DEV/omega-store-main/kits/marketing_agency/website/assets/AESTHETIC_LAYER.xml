@@ -13,9 +13,38 @@
         <token name="animation-smooth">cubic-bezier(0.4, 0, 0.2, 1)</token>
         <token name="void-bg">#050505</token>
         <token name="focus-glow-blue">rgba(59, 130, 246, 0.5)</token>
+        
+        <!-- Trust Palette -->
+        <token name="trust-primary">#0F172A</token>
+        <token name="trust-cta">#0369A1</token>
+        
+        <!-- Luxury Palette -->
+        <token name="luxury-primary">#1C1917</token>
+        <token name="luxury-cta">#CA8A04</token>
+        
+        <!-- Tech Palette -->
+        <token name="tech-primary">#6366F1</token>
+        <token name="tech-cta">#10B981</token>
     </tokens>
 
     <css_presets>
+        <preset name="pro-max-neumorphism"><![CDATA[
+/* Neumorphism 2.0 (Tactile) */
+.neumorphic {
+  background: var(--background, #f0f0f0);
+  box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+  border-radius: 16px;
+}
+        ]]></preset>
+
+        <preset name="pro-max-linear"><![CDATA[
+/* Linear/Vercel Aesthetic */
+.linear-card {
+  background: #1A1A1A;
+  border: 1px solid #333333;
+  color: #FFFFFF;
+}
+        ]]></preset>
         <preset name="custom-scrollbar"><![CDATA[
 /* Custom Dark Scroller */
 ::-webkit-scrollbar {

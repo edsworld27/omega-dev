@@ -1,8 +1,17 @@
 # WEBSITE KIT — Starter Pattern
 
 ## Specialized Laws
-- **Legal Authority:** See [BEST_PRACTICES.xml](file:///Users/eds/Documents/Omega%20Constitution Pack/Omega DEV Panel/06_Full_System/omega-store/kits/website/BEST_PRACTICES.xml) for Accessibility and Aesthetic mandates.
-- **Asset Layer:** See [AESTHETIC_LAYER.xml](file:///Users/eds/Documents/Omega%20Constitution Pack/Omega DEV Panel/06_Full_System/omega-store/kits/website/assets/AESTHETIC_LAYER.xml) for CSS presets.
+- **Legal Authority:** See [BEST_PRACTICES.xml](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20DEV%20Panel/06_Full_System/omega-store/kits/website/BEST_PRACTICES.xml) for Accessibility and Aesthetic mandates.
+- **Asset Layer:** See [AESTHETIC_LAYER.xml](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20DEV%20Panel/06_Full_System/omega-store/kits/website/assets/AESTHETIC_LAYER.xml) for CSS presets.
+- **Design Intelligence:** Every project MUST adhere to the [UI_UX_PRO_MAX_TEMPLATE.md](file:///Volumes/Internal/Projects/Omega%20System/Omega%20System%20DEV%20MODE/Projects/06_Full_System/Dev%20Version%20(Edit)/omega-store%20DEV/omega-store-main/kits/marketing_agency/website/UI_UX_PRO_MAX_TEMPLATE.md) philosophy.
+
+## The 5 Core Dimensions (Pro Max)
+All builds must be architected across these non-negotiable dimensions:
+1. **SKELETON (Pattern & Layout):** SaaS, Micro-SaaS, E-comm, or Bento.
+2. **SKIN (Style & Aesthetic):** Glass, Aurora, Linear, or Liquid.
+3. **PALETTE (Color & Theme):** 60-30-10 rule, verified WCAG contrast.
+4. **VOICE (Typography):** Strategic font pairings (Modern/Tech, Luxury, etc.).
+5. **SOUL (Interaction):** Micro-interactions, spring animations, and page transitions.
 
 ## Specialized Lifecycle
 | Phase | Folder | Focus | Goal |

@@ -116,6 +116,24 @@ If we are activating 3D Scrollytelling Mode:
 
 ---
 
+### Batch 6: UI/UX Pro Max Dimensions (Visual DNA)
+```
+Before we build the UI, we must define its 5 Core Dimensions:
+
+1. **SKELETON (Pattern/Layout):** Which pattern fits your goal? 
+   - SaaS (Feature-heavy) / Portfolio (Story-telling) / E-comm (Luxury) / Crypto (Trust & Data)
+2. **SKIN (Style/Aesthetic):** What is the visual 'feel'?
+   - Glassmorphism / Aurora UI / Linear / Brutalist / Liquid Glass
+3. **PALETTE (Color):** What is the emotional mood?
+   - Trust (Navy/Slate) / Vibrant (Indigo/Emerald) / luxury (Gold/Stone) / Dark Mode
+4. **VOICE (Typography):** Select a brand voice:
+   - Modern Tech / Elegant Luxury / Friendly / Brutalist Bold
+5. **SOUL (Interaction):** Any specific animation preferences? 
+   - 3D Scrollytelling / Micro-interactions / Fade-Stagger / Scroll Reveal
+```
+
+---
+
 ## 4. EVALUATION MATRIX
 
 After discovery, score the project against WEBSITE_KIT.md requirements:
