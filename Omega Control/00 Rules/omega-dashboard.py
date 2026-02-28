@@ -55,7 +55,7 @@ MEMORY_BANK = JARVIS_DIR / "OMEGA_MEMORY_BANK.md"
 HIVE_DIR = WORKSPACE_ROOT / "Projects" / "Dev Version (Edit)" / "omega-constitution DEV" / "Entire_Constitution_Files" / "USER SPACE" / "dev-work" / "hive"
 SECURITY_SCRIPT = WORKSPACE_ROOT / "Projects" / "Dev Version (Edit)" / "omega-constitution DEV" / "Entire_Constitution_Files" / "omega-constitution-main" / "python" / "auto_security.py"
 
-# Absolute path to the conversation task file
+# Absolute path to the conversation task file (Configured during Setup Vault onboarding)
 TASK_FILE = Path("/Users/eds/.gemini/antigravity/brain/be8c1bd9-adb6-424d-a58b-f7f1254dad83/task.md")
 
 import subprocess
@@ -265,7 +265,7 @@ with tab6:
     with st.expander("🛠️ Repository Binding", expanded=True):
         st.text_input("Constitution Repo URL", value="https://github.com/edsworld27/omega-constitution.git")
         st.text_input("Store Repo URL", value="https://github.com/edsworld27/omega-store.git")
-        st.text_input("Personal Projects Path", value="/Volumes/Internal/Projects/")
+        st.text_input("Personal Projects Path", value="/Volumes/Internal/Projects/Omega System/Projects/")
         if st.button("Bind Repositories"):
             st.success("Mathematical alignment confirmed.")
             
