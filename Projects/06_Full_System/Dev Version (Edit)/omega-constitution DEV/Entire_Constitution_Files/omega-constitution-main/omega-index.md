@@ -9,6 +9,7 @@ When you need to reference specific rules, methodologies, or blueprints, execute
 
 ## Map of Core Files
 
+*   **Skills System:** `SKILLS.xml` (ALL skills for ANY IDE - the constitution IS the skill system)
 *   **Security Policies:** `SECURITY.xml`
 *   **Prompting & Interaction Rules:** `PROMPTING.xml`, `INSTRUCTOR.xml`
 *   **Architectural Framework:** `FRAMEWORK.xml`, `STRUCTURE.xml`, `CONTEXT_PROTOCOL.xml`

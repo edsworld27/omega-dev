@@ -49,3 +49,4 @@ For agentic projects, skills can be scoped to specific agents:
 | Guardian | `guardian-agent.md` | Relationship preservation and compliance |
 | Orchestrator | `orchestrator-agent.md` | Multi-agent coordination |
 | Claude Code | `claude-agent.md` | Bootstraps Anthropic's CLI to obey Omega System rulings |
+| Archivist | `archivist-agent.md` | The AGI hippocampus. Extracts local memory and new workflows, pushing them entirely to private repos/local context to protect the immutable Constitution. |

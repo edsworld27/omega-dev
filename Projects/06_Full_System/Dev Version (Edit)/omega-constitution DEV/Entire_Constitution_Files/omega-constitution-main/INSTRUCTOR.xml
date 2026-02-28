@@ -241,7 +241,7 @@
           RULES: No deviation. One question at a time. Wait for answers.
           ALWAYS tell users WHERE to put files.
         </checkpoint>
-        <checkpoint id="CP-0" name="SEED SCAN">After onboarding, read all files. Report what exists, what's missing, what's incomplete.</checkpoint>
+        <checkpoint id="CP-0" name="SEED SCAN">Before scanning anything else, locate and ingest the active agent's local `jarvis/OMEGA_MEMORY_BANK.md` or equivalent local memory (if it exists). Then, read all project seed files. Report what exists, what's missing, what's incomplete.</checkpoint>
         <checkpoint id="CP-1" name="INITIALISATION">Summarise understanding. Ask questions for gaps. Propose phases if none exist.</checkpoint>
         <checkpoint id="CP-2" name="ENVIRONMENT">Generate folder tree from STRUCTURE.xml AND output a definitive `TREEMAP.md` mapping the established structure. Present structure.</checkpoint>
         <checkpoint id="CP-3" name="PRD REVIEW">Generate PRD using blueprints/PRD.md + Prompter. Present for approval.</checkpoint>
@@ -402,6 +402,7 @@ STOP REPORT
   <state_and_logging>
     <file name="STATE.md">Update after every meaningful step</file>
     <file name="TREEMAP.md">Maintained map of the entire DEV structure; continuously updated whenever files/folders are created or pruned.</file>
+    <file name="OMEGA_MEMORY_BANK.md">The local AGI hippocampus. Read at CP-0, written to (via archivist-agent) after Phase C or complex tasks.</file>
     <file name="progress.md">[TIMESTAMP] Phase: [A/B/C] | Action -> Result -> Evidence Path</file>
     <file name="findings.md">Discoveries and learnings</file>
     <file name="decision_log.md">Every major decision with rationale</file>

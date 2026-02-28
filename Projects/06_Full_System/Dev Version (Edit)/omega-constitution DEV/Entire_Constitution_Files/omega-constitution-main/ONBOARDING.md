@@ -6,7 +6,128 @@ The AI MUST follow this exact sequence. No skipping. No deviation.
 
 ---
 
-## STEP 1: Intent Detection (ALWAYS FIRST)
+## STEP 0: IDE & Environment Setup (FIRST TIME ONLY)
+
+**Run this step ONLY if user is new OR hasn't configured their IDE.**
+
+```
+═══════════════════════════════════════════════════════════
+  OMEGA CONSTITUTION — ENVIRONMENT SETUP
+═══════════════════════════════════════════════════════════
+
+  Which AI environment are you using?
+
+  1. CLAUDE CODE — Anthropic's CLI tool
+  2. CURSOR — AI-powered IDE
+  3. ANTIGRAVITY — Google's AI agent
+  4. VS CODE + COPILOT — Microsoft's setup
+  5. OTHER IDE — Tell me which one
+  6. SKIP — Already configured / Just want to build
+
+  Reply with: 1, 2, 3, 4, 5, or 6
+═══════════════════════════════════════════════════════════
+```
+
+### If CLAUDE CODE (1):
+```
+═══════════════════════════════════════════════════════════
+  CLAUDE CODE SETUP
+═══════════════════════════════════════════════════════════
+
+  I'll configure Claude Code for Omega Constitution.
+
+  Creating:
+  ✅ .claude/skills/omega/SKILL.md — Master skill
+  ✅ .claude/settings.json — Auto-load context
+  ✅ CLAUDE.md — Project rules
+
+  After this, use /omega to load the full constitution.
+
+  Setup complete? (yes to continue)
+═══════════════════════════════════════════════════════════
+```
+
+### If CURSOR (2):
+```
+═══════════════════════════════════════════════════════════
+  CURSOR SETUP
+═══════════════════════════════════════════════════════════
+
+  I'll configure Cursor for Omega Constitution.
+
+  Creating:
+  ✅ .cursorrules — Points to constitution
+  ✅ TREEMAP.md — Structure reference
+
+  Cursor will now follow the Omega Constitution automatically.
+
+  Setup complete? (yes to continue)
+═══════════════════════════════════════════════════════════
+```
+
+### If ANTIGRAVITY (3):
+```
+═══════════════════════════════════════════════════════════
+  ANTIGRAVITY SETUP
+═══════════════════════════════════════════════════════════
+
+  Antigravity will read the constitution from project folder.
+
+  Ensuring:
+  ✅ omega-constitution/ folder exists
+  ✅ INSTRUCTOR.xml is readable
+
+  Tell Antigravity: "Read INSTRUCTOR.xml and follow it"
+
+  Setup complete? (yes to continue)
+═══════════════════════════════════════════════════════════
+```
+
+### If VS CODE + COPILOT (4):
+```
+═══════════════════════════════════════════════════════════
+  VS CODE + COPILOT SETUP
+═══════════════════════════════════════════════════════════
+
+  I'll configure Copilot for Omega Constitution.
+
+  Creating:
+  ✅ .github/copilot-instructions.md — Points to constitution
+  ✅ CLAUDE.md — Fallback instructions
+
+  Copilot will now reference the constitution.
+
+  Setup complete? (yes to continue)
+═══════════════════════════════════════════════════════════
+```
+
+### If OTHER IDE (5):
+```
+═══════════════════════════════════════════════════════════
+  OTHER IDE SETUP
+═══════════════════════════════════════════════════════════
+
+  For any IDE with AI capabilities:
+
+  1. Ensure omega-constitution/ folder is in your project
+  2. Create a file (.cursorrules, CLAUDE.md, or similar)
+     pointing to INSTRUCTOR.xml
+  3. Tell your AI: "Read INSTRUCTOR.xml and follow
+     the Omega Constitution"
+
+  Or fetch directly:
+  curl -s https://github.com/edsworld27/omega-constitution
+
+  Manual setup complete? (yes to continue)
+═══════════════════════════════════════════════════════════
+```
+
+### If SKIP (6):
+Proceed directly to Step 1.
+
+---
+
+## STEP 1: Intent Detection
 
 ```
 ═══════════════════════════════════════════════════════════
