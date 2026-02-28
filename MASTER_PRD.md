@@ -16,10 +16,12 @@
 4.  **Memory Manager:** FRACTAL_PROTOCOL v1.0 (Rule of 3).
 
 ## 🌳 FRACTAL MAP (Active Branches)
-- **CONSTITUTION:** [omega-index.md](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20System%20Public/Constution%20V13/CONSTITUTION/omega-index.md)
-- **CONTEXT:** [CONTEXT_MAP.md](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20DEV%20Panel/03_Context/CONTEXT_MAP.md)
-- **EVALUATIONS:** [EVALUATION_INDEX.md](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20DEV%20Panel/01_Evaluations/EVALUATION_INDEX.md)
-- **PHASES:** [Phases MAP](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20DEV%20Panel/04_Implementations/Phases/TREE_MAP.md)
+- **CONSTITUTION:** [00_Constitution](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20DEV%20Panel/00_Constitution/omega-index.md)
+- **USER INPUT:** [01_UserInput Map](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20DEV%20Panel/01_User_Input/TREE_MAP.md)
+- **EVALUATIONS:** [02_Evaluations Index](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20DEV%20Panel/02_Evaluations/EVALUATION_INDEX.md)
+- **CONTEXT:** [03_Context Map](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20DEV%20Panel/03_Context/CONTEXT_MAP.md)
+- **PHASES:** [04_Implementations Map](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20DEV%20Panel/04_Implementations/Phases/TREE_MAP.md)
+- **IDEATION:** [05_Ideation Inbox](file:///Users/eds/Documents/Omega%20Constitution%20Pack/Omega%20DEV%20Panel/05_Ideation/inbox.md)
 
 ## ⚖️ PHASE BOUNDARIES (Creep Prevention)
 1. **PHASE 1 (Architecture):** Decoupled 5-repo core + God-Mode sync. [Grounded]
