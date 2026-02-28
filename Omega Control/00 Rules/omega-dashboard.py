@@ -45,21 +45,22 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # --- PATHS ---
-DEV_ROOT = Path(__file__).parent
-JARVIS_DIR = DEV_ROOT / "jarvis"
+RULES_DIR = Path(__file__).parent
+WORKSPACE_ROOT = RULES_DIR.parent.parent
+JARVIS_DIR = WORKSPACE_ROOT / "FULL PROJECTS" / "Projects" / "06_Full_System" / "Dev Version (Edit)" / "Omega Claw v1 DEV" / "jarvis"
 CONFIG_FILE = JARVIS_DIR / "CONFIG.md"
 MEMORY_BANK = JARVIS_DIR / "OMEGA_MEMORY_BANK.md"
 
 # Hive Path (from dev version edit)
-HIVE_DIR = DEV_ROOT / "Projects/06_Full_System/Dev Version (Edit)/omega-constitution DEV/Entire_Constitution_Files/USER SPACE/dev-work/hive"
-SECURITY_SCRIPT = DEV_ROOT / "Projects/06_Full_System/Dev Version (Edit)/omega-constitution DEV/Entire_Constitution_Files/omega-constitution-main/python/auto_security.py"
+HIVE_DIR = WORKSPACE_ROOT / "FULL PROJECTS" / "Projects" / "06_Full_System" / "Dev Version (Edit)" / "omega-constitution DEV" / "Entire_Constitution_Files" / "USER SPACE" / "dev-work" / "hive"
+SECURITY_SCRIPT = WORKSPACE_ROOT / "FULL PROJECTS" / "Projects" / "06_Full_System" / "Dev Version (Edit)" / "omega-constitution DEV" / "Entire_Constitution_Files" / "omega-constitution-main" / "python" / "auto_security.py"
 
 # Absolute path to the conversation task file
 TASK_FILE = Path("/Users/eds/.gemini/antigravity/brain/be8c1bd9-adb6-424d-a58b-f7f1254dad83/task.md")
 
 import subprocess
 
-def run_script(command, cwd=str(DEV_ROOT)):
+def run_script(command, cwd=str(WORKSPACE_ROOT)):
     """Runs a script and returns output."""
     try:
         result = subprocess.run(command, shell=True, capture_output=True, text=True, cwd=cwd)

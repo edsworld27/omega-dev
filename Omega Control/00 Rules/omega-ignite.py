@@ -9,16 +9,19 @@ def ignite():
     # 1. Start Python Bridge API
     print("⚡ Starting Bridge API (FastAPI)...")
     script_dir = os.path.dirname(os.path.abspath(__file__))
+    workspace_root = os.path.abspath(os.path.join(script_dir, "../../"))
+    jarvis_root = os.path.join(workspace_root, "FULL PROJECTS/Projects/06_Full_System/Dev Version (Edit)/Omega Claw v1 DEV/jarvis")
+    
     bridge_proc = subprocess.Popen(
         [sys.executable, "-m", "uvicorn", "main:app", "--port", "8000", "--reload"],
-        cwd=os.path.abspath(os.path.join(script_dir, "../jarvis/bridge-api"))
+        cwd=os.path.join(jarvis_root, "bridge-api")
     )
     
     # 2. Start Next.js Frontend
     print("💎 Starting Next.js Dashboard...")
     frontend_proc = subprocess.Popen(
         ["npm", "run", "dev"],
-        cwd=os.path.abspath(os.path.join(script_dir, "../jarvis/dashboard-next"))
+        cwd=os.path.join(jarvis_root, "dashboard-next")
     )
     
     # 3. Start Omega Backup Watcher (5-min pulse)
