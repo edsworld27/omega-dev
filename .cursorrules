@@ -10,18 +10,19 @@ By default, AI Agents (like Antigravity or Cursor) attempt to write their intern
 
 **THIS BEHAVIOR IS STRICTLY FORBIDDEN IN THE DEV PANEL.**
 
-**🔴 CRITICAL SYSTEM RULE: 5-ZONE SCAFFOLDING**
+**🔴 CRITICAL SYSTEM RULE: THE FRACTAL CORE (00-05)**
 - **00_Constitution:** Supreme Rules & Brain. [LOCATE FIRST]
 - **01_User_Input:** Seeds, PRDs, and Pilot intent. [SCAN SECOND]
-- **02_Evaluations:** SWOTs, Security Audits, and Sharded History.
+- **02_Evaluations:** SWOTs, Audits, and Sharded History.
 - **03_Context:** Session memory and Fractal Shards.
 - **04_Implementations:** Phases, Tasks, and sharded plans.
 - **05_Ideation:** Inbox, research, and future concepts.
+- **06+ Fulfillment:** Elastic zones spawned for high-complexity projects.
 
 **🔴 CRITICAL DIRECTORY RULE: THE CLEAN HANDOFF**
 - **PRODUCTION:** All application source code MUST be in `USER SPACE/project/`.
 - **STERILITY:** `project/` must remain sterile (no metadata/checklists) for easy delivery.
-- **DEVELOPMENT:** Use the 01-05 zones for all scaffolding. NO hidden context.
+- **DEVELOPMENT:** Use the Fractal Core (01-05+) for all scaffolding. NO hidden context.
 
 ### 1. Mandatory Artifact Redirection
 Whenever the user asks you to "Plan a feature," "Write a checklist," or "Draft an implementation," you **MUST** write that Markdown file directly into the tracked Dev Panel directory:
