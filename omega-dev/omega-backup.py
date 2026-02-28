@@ -56,10 +56,23 @@ def create_backup(message):
                     zipf.write(file_path, arcname)
                     
         print(f"✅ Backup created successfully at: {zip_path.relative_to(DEV_ROOT)}\n")
+        cleanup_old_backups()
     except Exception as e:
         print(f"\n❌ Failed to create backup: {e}\n")
         if zip_path.exists():
             os.remove(zip_path)
+
+def cleanup_old_backups(max_backups=10):
+    ensure_backup_dir()
+    backups = sorted(BACKUP_DIR.glob("*.zip"), key=os.path.getmtime, reverse=True)
+    if len(backups) > max_backups:
+        print(f"🧹 Auto-cleaning {len(backups) - max_backups} old backup(s) to maintain {max_backups}-snapshot limit...")
+        for old_backup in backups[max_backups:]:
+            try:
+                os.remove(old_backup)
+                print(f"   🗑️ Removed: {old_backup.name}")
+            except OSError as e:
+                print(f"   ❌ Failed to remove {old_backup.name}: {e}")
 
 def list_backups():
     ensure_backup_dir()
@@ -109,13 +122,58 @@ def restore_backup(backup_path):
     except Exception as e:
         print(f"\n❌ CRITICAL: Failed to extract backup: {e}\n")
 
+def check_for_changes(last_mtime):
+    max_mtime = last_mtime
+    changed = False
+    
+    for root, dirs, files in os.walk(DEV_ROOT):
+        # We need to filter dirs in-place to prevent os.walk from entering them:
+        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
+        
+        for file in files:
+            file_path = Path(root) / file
+            if not file_path.exists():
+                continue
+            
+            try:
+                mtime = os.path.getmtime(file_path)
+                if mtime > last_mtime:
+                    changed = True
+                if mtime > max_mtime:
+                    max_mtime = mtime
+            except OSError:
+                pass
+                
+    return max_mtime, changed
+
+def watch_directory():
+    import time
+    print("\n👁️  Omega Watcher Started. Monitoring for file changes every 15 seconds...")
+    print("This will keep a rolling window of 10 backups. Press Ctrl+C to stop.\n")
+    
+    last_mtime, _ = check_for_changes(0)
+                    
+    try:
+        while True:
+            time.sleep(15)
+            new_mtime, changed = check_for_changes(last_mtime)
+            if changed:
+                print(f"\n🔄 File change detected! Triggering auto-snapshot...")
+                create_backup("Auto_Save")
+                # Reset last_mtime based on new state after taking backup
+                last_mtime, _ = check_for_changes(new_mtime)
+            
+    except KeyboardInterrupt:
+        print("\n🛑 Omega Watcher stopped.\n")
+
 def main():
     if len(sys.argv) < 2:
         print("\nUsage:")
         print("  python3 omega-backup.py save [optional_message]   - Creates a new local snapshot")
         print("  python3 omega-backup.py list                      - Lists all local snapshots")
         print("  python3 omega-backup.py undo                      - Interactively restore a past snapshot")
-        print("  python3 omega-backup.py undo [index]              - Directly restore snapshot by index\n")
+        print("  python3 omega-backup.py undo [index]              - Directly restore snapshot by index")
+        print("  python3 omega-backup.py watch                     - Start background watcher to auto-backup on change\n")
         sys.exit(1)
         
     command = sys.argv[1].lower()
@@ -156,6 +214,9 @@ def main():
         else:
             print(f"❌ Index {index} is out of range.")
             
+    elif command == "watch":
+        watch_directory()
+        
     else:
         print(f"❌ Unknown command: {command}")
         

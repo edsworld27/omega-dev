@@ -43,3 +43,18 @@ When you want to fundamentally alter how the public AI system works:
 4. **Live Update:** Because public shell users (`Omega-System`) dynamically fetch protocols from the cloud via MCP or curl on Day 1, your deployed changes go instantly live across the entire global user base in zero seconds, with no package downloads required.
 
 *For detailed instructions on cross-repo AI mutations, see `06_Full_System/README_GOD_MODE.md`.*
+
+---
+
+## 🛡️ The Backup & Undo System
+Before running large automated mutations or relying heavily on autonomous agent changes, you should always take a snapshot. 
+
+We have provided **`omega-backup.py`** to instantly package your entire `omega-dev` environment into a zipped snapshot (saving it in `.dev_backups/`).
+
+**Usage:**
+1. `python3 omega-backup.py save [message]` — Create a snapshot before a risky AI task.
+2. `python3 omega-backup.py list` — View available snapshots.
+3. `python3 omega-backup.py undo` — Interactively wipe current work and restore from a snapshot.
+4. `python3 omega-backup.py watch` — Start a background watcher that automatically creates a rolling snapshot whenever code changes.
+
+*Note: The backup system automatically maintains a rolling limit of your 10 most recent snapshots so your drive never fills up.*
