@@ -110,10 +110,10 @@ Constution V10/
 │   │   ├── plug-and-play/      ← Drop existing files here
 │   │   ├── phases/             ← Phase-based work tracking
 │   │   └── docs/               ← Generated documentation
-│   ├── project/                ← Clean deliverable output
-│   │   ├── src/
-│   │   ├── public/
-│   │   └── tests/
+│   ├── project/                ← CLEAN HANDOFF: Your deployable production code
+│   │   ├── (Final Assets)      ← Everything here is sterile and ready to zip
+│   │   ├── (Source Code)       ← No constitution references or dev-work trackers
+│   │   └── (No Metadata)       ← Ready for `git init` and deployment
 │   └── logging/
 │       └── compliance_report.md ← Auto-generated security report
 │
