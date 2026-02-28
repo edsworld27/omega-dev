@@ -4,7 +4,54 @@
 
 ---
 
-## v16.0 — 2026-02-27 (The "God-Mode" Architecture)
+## v16.7 — 2026-02-28 (The Scaffolding Boundary)
+
+### Dev-Only Fractal Mandate
+- Confined Fractal Sharding and Tree Map Spawning strictly to the `dev-work/` directory.
+- Guaranteed "Project Sterility" for the `project/` directory to ensure clean, standard user handoffs.
+- Upgraded `INSTRUCTOR.xml` to v6.5 with strict directory boundary enforcement.
+
+### Phase Grounding
+- Defined mathematical boundaries for project phases in the `MASTER_PRD.md`.
+- Capped each phase cluster at 10 core elements to prevent scope creep.
+
+---
+
+## v16.6 — 2026-02-28 (Fractal Fulfillment)
+
+### The Rule of 3 (Infinite Fractal Sharding)
+- Implemented recursive sharding across all developer directories.
+- Every 3 files shard into a versioned subdirectory; every 3 subdirectories shard into a meta-cluster.
+- Codified into the new `FRACTAL_PROTOCOL.xml`.
+
+### Tree Map Spawning
+- Automated the generation of local `TREE_MAP.md` indices for every sharded directory.
+- Enabled high-speed AI navigation by hopping between localized maps instead of directory scanning.
+
+### The Eternal PRD
+- Introduced `MASTER_PRD.md` as a living "God-Document" that evolves with every build.
+- Tracks active toolsets and top-level fractal coordinates.
+
+---
+
+## v16.5 — 2026-02-28 (Hierarchical Sharding)
+
+### Hierarchical Memory Structure
+- Reorganized `01_Evaluations` into versioned shards (v1, v2, v3, v4_active).
+- Implemented hierarchical folder rotation every 3 documents.
+- Created `EVALUATION_INDEX.md` and `CONTEXT_MAP.md` as master navigation hubs.
+
+---
+
+## v16.1 - v16.4 — 2026-02-27 (Granular Context)
+
+### Context Tree Map Architecture
+- Replaced monolithic context with modular `.context.md` files in `dev-work/context/modules/`.
+- Implemented the "Branch & Split" protocol for files exceeding 2000 tokens.
+- Hard-coded "Token Efficiency" as a Prime Directive in `INSTRUCTOR.xml` (v6.2).
+
+---
+
 
 ### 5-Repo Ecosystem Decoupling
 - Completely decentralized the monolithic system into 5 distinct, highly-scalable repositories.
