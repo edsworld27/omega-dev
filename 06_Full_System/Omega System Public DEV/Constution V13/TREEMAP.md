@@ -131,6 +131,7 @@ Constution V10/
     ├── context/              ← Granular Architectural Memory (V16.4)
     │   ├── CONTEXT_MAP.md    ← The master "Tree Map" index
     │   └── modules/          ← specialized .context.md files
+    │       └── v[N]_changes/ ← versioned shards (every 3 docs)
     ├── phases/               ← AI implementation trackers
     ├── evaluations/          ← Persistent SWOTs/Audits (V16.3)ion
     └── ideation/               ← Research & prototyping
