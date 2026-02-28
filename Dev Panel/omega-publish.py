@@ -13,12 +13,7 @@ from pathlib import Path
 
 COMMIT_MESSAGE = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else "Auto-Sync: God-Mode Master Architecture Update"
 
-MAPPINGS = {
-    "omega-constitution LIVE": "https://github.com/edsworld27/omega-constitution.git",
-    "omega-store LIVE": "https://github.com/edsworld27/omega-store.git",
-    "Omega Claw v1 LIVE": "https://github.com/edsworld27/omega-claw.git",
-    "Omega System Public LIVE": "https://github.com/edsworld27/Omega-System.git"
-}
+import xml.etree.ElementTree as ET
 
 DEV_PANEL = Path(os.path.dirname(os.path.abspath(__file__)))
 DEV_ROOT = DEV_PANEL.parent
@@ -32,23 +27,42 @@ if TMP_DIR.exists():
 os.makedirs(TMP_DIR)
 
 try:
-    for local_folder, remote_url in MAPPINGS.items():
-        source_path = SOURCE_DIR / local_folder
+    # Discover XML project pointers
+    xml_files = [f for f in os.listdir(SOURCE_DIR) if f.endswith(".xml")]
+    if not xml_files:
+        print(f"⚠️  No XML project pointers found in {SOURCE_DIR}")
+    
+    for xml_file in xml_files:
+        xml_path = SOURCE_DIR / xml_file
+        tree = ET.parse(xml_path)
+        root = tree.getroot()
+        
+        project_name = root.get("name") or xml_file.replace(".xml", "")
+        remote_url = root.find("repository").get("url")
+        source_rel_path = root.find("source_path").text
+        
+        # Calculate absolute source path
+        if source_rel_path == ".":
+            source_path = DEV_ROOT
+        else:
+            source_path = DEV_ROOT / source_rel_path
+            
         if not source_path.exists():
-            print(f"⚠️  Skipping {local_folder}: Source directory not found in 06_Full_System.")
+            print(f"⚠️  Skipping {project_name}: Source path {source_path} not found.")
             continue
             
-        print(f"🔄 Syncing '{local_folder}' to {remote_url}...")
-        repo_dir = TMP_DIR / local_folder
+        print(f"🔄 Syncing '{project_name}' to {remote_url}...")
+        repo_dir = TMP_DIR / project_name
         
         # 1. Clone the remote repo
         subprocess.run(["git", "clone", "--quiet", remote_url, str(repo_dir)], check=True)
         
         # 2. Rsync the local master copy over the clone (excluding .git)
-        # Using rsync to handle sync perfectly, deleting removed files
         rsync_cmd = [
             "rsync", "-av", "--delete",
             "--exclude=.git",
+            "--exclude=node_modules",
+            "--exclude=.tmp_publish",
             f"{str(source_path)}/",
             f"{str(repo_dir)}/"
         ]
@@ -60,12 +74,12 @@ try:
         # Check if there are changes before committing
         status = subprocess.run(["git", "status", "--porcelain"], cwd=repo_dir, capture_output=True, text=True)
         if not status.stdout.strip():
-            print(f"✅ No changes detected for {local_folder}. Skipping commit.\n")
+            print(f"✅ No changes detected for {project_name}. Skipping commit.\n")
             continue
             
         subprocess.run(["git", "commit", "-m", COMMIT_MESSAGE], cwd=repo_dir, stdout=subprocess.DEVNULL, check=True)
         subprocess.run(["git", "push", "--quiet", "origin", "main"], cwd=repo_dir, check=True)
-        print(f"🌐 Successfully published {local_folder} to live ecosystem!\n")
+        print(f"🌐 Successfully published {project_name} to live ecosystem!\n")
 
     # 4. Finally, push the Dev Panel itself
     print("🧠 Syncing Omega DEV Panel Master Repository...")
