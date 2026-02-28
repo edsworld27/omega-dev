@@ -416,6 +416,63 @@
             Force operations logged for audit.
           </rule>
 
+          <!-- LOCK TIMEOUT ESCALATION STRATEGY -->
+          <lock_timeout_escalation>
+            <description>
+              When a lock blocks your work, follow this tiered escalation strategy.
+              Classify as E8 (Coordination Error) per QUALITY.xml.
+            </description>
+
+            <tier order="1" name="Immediate Check" duration="0-30 seconds">
+              <action>Check if lock is stale (heartbeat >2min old)</action>
+              <action>Run: python hive_locker.py cleanup --agent-id [ID]</action>
+              <outcome_if_resolved>Acquire lock, proceed with work</outcome_if_resolved>
+              <outcome_if_blocked>Proceed to Tier 2</outcome_if_blocked>
+            </tier>
+
+            <tier order="2" name="Wait and Retry" duration="30-120 seconds">
+              <action>Wait 30 seconds</action>
+              <action>Retry lock acquisition</action>
+              <action>If still blocked, wait 30 more seconds and retry (max 3 attempts)</action>
+              <outcome_if_resolved>Acquire lock, proceed with work</outcome_if_resolved>
+              <outcome_if_blocked>Proceed to Tier 3</outcome_if_blocked>
+            </tier>
+
+            <tier order="3" name="Alternative Path" duration="2-5 minutes">
+              <action>Check if alternative file can achieve same goal</action>
+              <action>Check if task can be reordered to work on unlocked files first</action>
+              <action>Check master-job-board.md for job reassignment options</action>
+              <outcome_if_resolved>Work on alternative, return to blocked file later</outcome_if_resolved>
+              <outcome_if_blocked>Proceed to Tier 4</outcome_if_blocked>
+            </tier>
+
+            <tier order="4" name="Coordination Request" duration="5-10 minutes">
+              <action>Write blockers/COORDINATION-[JOB_ID].md with conflict details</action>
+              <action>Add comment to master-job-board.md: "[BLOCKED] Agent [ID] waiting for [FILE]"</action>
+              <action>If Omega Claw installed: Notify via Telegram</action>
+              <outcome_if_resolved>Other agent responds, releases lock</outcome_if_resolved>
+              <outcome_if_blocked>Proceed to Tier 5</outcome_if_blocked>
+            </tier>
+
+            <tier order="5" name="Human Escalation" duration=">10 minutes">
+              <action>Generate STOP REPORT (E8 Coordination Error)</action>
+              <action>Present options to human:
+                A) Wait for lock release
+                B) Force-unlock (Master Orchestrator only)
+                C) Reassign job to avoid conflict
+                D) Terminate blocked agent's session
+              </action>
+              <action>Do NOT proceed until human decision</action>
+            </tier>
+
+            <timeout_thresholds>
+              <file_lock_default>300 seconds (5 minutes)</file_lock_default>
+              <git_push_lock>60 seconds (1 minute)</git_push_lock>
+              <stale_heartbeat>120 seconds (2 minutes)</stale_heartbeat>
+              <escalation_to_human>600 seconds (10 minutes)</escalation_to_human>
+            </timeout_thresholds>
+          </lock_timeout_escalation>
+
           <escalation_format><![CDATA[
 MULTI-AGENT CONFLICT DETECTED
 
@@ -705,6 +762,100 @@ STOP REPORT
       <rule>Load templates just-in-time. Read, use, summarise key points, unload.</rule>
       <rule>If resuming: SESSION_CONTEXT.md tells you everything. Start there.</rule>
     </rules>
+
+    <!-- CONTEXT CASCADE PRUNING (v14.4) -->
+    <context_cascade_pruning>
+      <description>
+        SESSION_CONTEXT.md can grow unbounded across long projects.
+        This protocol defines when and how to prune to prevent E9 (Context Overflow) errors.
+      </description>
+
+      <thresholds>
+        <warning lines="500" kb="25">Check for pruning opportunity</warning>
+        <action lines="1000" kb="50">Prune before next checkpoint</action>
+        <critical lines="2000" kb="100">HALT and force prune immediately</critical>
+      </thresholds>
+
+      <pruning_protocol>
+        <step order="1" name="Measure">
+          Count lines and estimate KB in SESSION_CONTEXT.md.
+          If below warning threshold, no action needed.
+        </step>
+
+        <step order="2" name="Identify Stale Sections">
+          Mark sections as STALE if:
+          - Decisions from completed phases (Phase A done → A context stale)
+          - Seed summaries already incorporated into PRD
+          - File indexes for files not actively being edited
+          - Session logs older than current phase
+        </step>
+
+        <step order="3" name="Archive Before Delete">
+          Move stale content to: 06_vault/context_archive/[YYYY-MM-DD]-[phase].md
+          NEVER delete without archiving. Knowledge may be needed later.
+        </step>
+
+        <step order="4" name="Compress Active Sections">
+          For sections that must remain:
+          - Remove "how we got there" - keep only "what was decided"
+          - Remove quoted file content - keep only "file X contains Y pattern"
+          - Remove verbose session logs - keep only milestone entries
+          - Reduce multi-line decisions to single-line summaries
+        </step>
+
+        <step order="5" name="Restructure">
+          After pruning, SESSION_CONTEXT.md should have:
+          - Project Identity (5 lines max)
+          - Current Phase + Checkpoint (3 lines max)
+          - Active Blockers (if any)
+          - Key Decisions This Phase (10 lines max)
+          - Next Actions (5 lines max)
+          Target: Under 100 lines for active context.
+        </step>
+
+        <step order="6" name="Validate">
+          After pruning, verify:
+          - Current checkpoint is clear
+          - Active phase is identified
+          - No broken references to pruned content
+          - Archive file is readable and complete
+        </step>
+      </pruning_protocol>
+
+      <auto_prune_triggers>
+        <trigger>Phase completion (CP-7) - archive phase context</trigger>
+        <trigger>Session start if threshold exceeded</trigger>
+        <trigger>Before major mode transition (e.g., PRE-PRODUCTION → PRODUCTION)</trigger>
+        <trigger>On E9 classification from QUALITY.xml</trigger>
+      </auto_prune_triggers>
+
+      <protected_sections>
+        <section>Project Identity (name, type, north star)</section>
+        <section>Current checkpoint and blockers</section>
+        <section>Security decisions (never prune security context)</section>
+        <section>Active phase decisions</section>
+      </protected_sections>
+
+      <archive_format><![CDATA[
+# Context Archive: [Project Name]
+**Archived**: [Date]
+**Phase**: [Phase that was pruned]
+**Reason**: [Threshold exceeded / Phase complete / Manual prune]
+
+## Decisions Archived
+- [Decision 1]: [Outcome]
+- [Decision 2]: [Outcome]
+
+## File Indexes Archived
+- [File]: [Summary]
+
+## Session Log Archived
+- [Timestamp]: [Action] → [Result]
+
+---
+*Archived by SESSION_CONTEXT.md pruning protocol*
+      ]]></archive_format>
+    </context_cascade_pruning>
   </context_window_management>
 
   <!-- ============================================================

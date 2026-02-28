@@ -45,6 +45,7 @@ Constution V10/
 │   ├── QUALITY.xml             ← Quality gates and checks
 │   ├── CODING_PRINCIPLES.xml   ← AI Coding Standards & Best Practices
 │   ├── EVALUATION_PROTOCOL.xml ← Token-Efficient Audit Rules
+│   ├── CONTEXT_PROTOCOL.xml    ← Granular Memory & Split Rules
 │   ├── SOURCES.xml             ← How to handle external deps
 │   ├── STRUCTURE.xml           ← File/folder conventions
 │   ├── ONBOARDING.md           ← Agent onboarding flow
@@ -127,12 +128,14 @@ Constution V10/
     ├── LINKS.md                ← All repo URLs + versions
     ├── CHANGES_DEV.md          ← Development changelog
     ├── CONTEXT_DEV.md          ← Dev context for agents
-    ├── IMPLEMENTATION_DEV.md   ← Implementation notes
-    ├── evaluation.md           ← Session evaluation
+    ├── context/              ← Granular Architectural Memory (V16.4)
+    │   ├── CONTEXT_MAP.md    ← The master "Tree Map" index
+    │   └── modules/          ← specialized .context.md files
+    ├── phases/               ← AI implementation trackers
+    ├── evaluations/          ← Persistent SWOTs/Audits (V16.3)ion
     └── ideation/               ← Research & prototyping
         ├── CONSTITUTION_BOT.md ← Bot design doc
         └── resource/           ← Gitignored prototypes
-```
 
 ---
 

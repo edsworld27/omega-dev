@@ -11,7 +11,7 @@ When you need to reference specific rules, methodologies, or blueprints, execute
 
 *   **Security Policies:** `SECURITY.xml`
 *   **Prompting & Interaction Rules:** `PROMPTING.xml`, `INSTRUCTOR.xml`
-*   **Architectural Framework:** `FRAMEWORK.xml`, `STRUCTURE.xml`
+*   **Architectural Framework:** `FRAMEWORK.xml`, `STRUCTURE.xml`, `CONTEXT_PROTOCOL.xml`
 *   **Quality & Best Practices:** `QUALITY.xml`, `PRACTICES.xml`, `CODING_PRINCIPLES.xml`, `EVALUATION_PROTOCOL.xml`
 *   **Agent Blueprints:** `blueprints/AGENT_MD.md`, `blueprints/AGENT_WORKFLOW.md`
 *   **Project Documents:** `blueprints/PRD.md`, `blueprints/SOP.md`, `blueprints/TEST_PLAN.md`
