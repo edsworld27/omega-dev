@@ -13,12 +13,12 @@ from pathlib import Path
 # restore to a previous state if an AI agent or human deletes files.
 
 DEV_ROOT = Path(os.path.dirname(os.path.abspath(__file__)))
-BACKUP_DIR = DEV_ROOT / ".dev_backups"
-IGNORE_DIRS = {".git", ".dev_backups", "__pycache__", "node_modules", ".tmp_publish"}
+BACKUP_DIR = DEV_ROOT / "99 Back Up" / "Omega System DEV MODE"
+IGNORE_DIRS = {".git", "99 Back Up", "__pycache__", "node_modules", ".tmp_publish", "omega-dev"}
 
 def ensure_backup_dir():
     if not BACKUP_DIR.exists():
-        os.makedirs(BACKUP_DIR)
+        os.makedirs(BACKUP_DIR, exist_ok=True)
 
 def get_ignore_paths(base_path):
     """Returns absolute paths we should never compress or delete."""
@@ -141,6 +141,9 @@ def check_for_changes(last_mtime):
                     changed = True
                 if mtime > max_mtime:
                     max_mtime = mtime
+            except FileNotFoundError:
+                # File was deleted since we listed it via os.walk
+                changed = True
             except OSError:
                 pass
                 

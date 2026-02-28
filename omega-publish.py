@@ -21,7 +21,7 @@ MAPPINGS = {
 }
 
 DEV_ROOT = Path(os.path.dirname(os.path.abspath(__file__)))
-SOURCE_DIR = DEV_ROOT / "06_Full_System"
+SOURCE_DIR = DEV_ROOT / "Projects" / "06_Full_System"
 TMP_DIR = DEV_ROOT / ".tmp_publish"
 
 print("\n🚀 INITIATING OMEGA GOD-MODE ECOSYSTEM PUBLISH 🚀\n")
